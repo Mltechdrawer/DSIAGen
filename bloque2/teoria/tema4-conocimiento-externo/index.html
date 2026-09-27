@@ -1,0 +1,1850 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Microcredencial universitaria de 3 ECTS">
+      
+      
+      
+      
+        <link rel="prev" href="../../">
+      
+      
+        <link rel="next" href="../tema5-sistemas-rag/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Tema 4. Conocimiento externo - Diseño de Sistemas de Inteligencia Artificial Generativa</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tema-4-incorporacion-y-recuperacion-de-conocimiento" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../.." title="Diseño de Sistemas de Inteligencia Artificial Generativa" class="md-header__button md-logo" aria-label="Diseño de Sistemas de Inteligencia Artificial Generativa" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Diseño de Sistemas de Inteligencia Artificial Generativa
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tema 4. Conocimiento externo
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Diseño de Sistemas de Inteligencia Artificial Generativa" class="md-nav__button md-logo" aria-label="Diseño de Sistemas de Inteligencia Artificial Generativa" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Diseño de Sistemas de Inteligencia Artificial Generativa
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    La microcredencial
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            La microcredencial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microcredencial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Presentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microcredencial/resultados-de-aprendizaje/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Resultados de aprendizaje
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microcredencial/organizacion-y-metodologia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Organización y metodología
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Bloque I. Interacción y contexto
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Bloque I. Interacción y contexto
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Presentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Teoría
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Teoría
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque1/teoria/tema1-modelos-y-sistemas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 1. Modelos y sistemas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque1/teoria/tema2-prompts-e-interaccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 2. Prompts e interacción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque1/teoria/tema3-contexto-y-memoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 3. Contexto y memoria
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Actividades
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Actividades
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque1/actividades/actividad1-prompts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad 1. Prompts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque1/actividades/actividad2-interaccion-contextual/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad 2. Interacción contextual
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Bloque II. Conocimiento y automatización
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Bloque II. Conocimiento y automatización
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Presentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Teoría
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Teoría
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Tema 4. Conocimiento externo
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 4. Conocimiento externo
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-una-pregunta-que-el-modelo-no-puede-resolver-solo" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Una pregunta que el modelo no puede resolver solo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-elegir-y-describir-fuentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Elegir y describir fuentes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Elegir y describir fuentes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#autoridad-vigencia-y-permisos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Autoridad, vigencia y permisos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-recuperar-fragmentos-pertinentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Recuperar fragmentos pertinentes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Recuperar fragmentos pertinentes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#del-documento-a-los-fragmentos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Del documento a los fragmentos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preparar-los-fragmentos-para-poder-encontrarlos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preparar los fragmentos para poder encontrarlos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distintas-formas-de-recuperar-informacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distintas formas de recuperar información
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#busqueda-semantica-y-representaciones-vectoriales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Búsqueda semántica y representaciones vectoriales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recuperar-no-significa-todavia-responder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recuperar no significa todavía responder
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-preparar-evidencia-para-una-respuesta" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Preparar evidencia para una respuesta
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ejemplos-para-analizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Ejemplos para analizar
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-sintesis-y-comprobacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Síntesis y comprobación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Síntesis y comprobación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lecturas-de-referencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecturas de referencia
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tema5-sistemas-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 5. Sistemas RAG
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tema6-automatizacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 6. Automatización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Actividades
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Actividades
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../actividades/actividad3-prototipo-con-conocimiento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad 3. Prototipo con conocimiento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../actividades/actividad4-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad 4. Workflow con IA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Bloque III. Diseño y evaluación
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Bloque III. Diseño y evaluación
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Presentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Teoría
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Teoría
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque3/teoria/tema7-arquitectura-e-integracion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 7. Arquitectura e integración
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque3/teoria/tema8-calidad-y-evaluacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 8. Calidad y evaluación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque3/actividades/actividad5-integracion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad de integración
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../proyecto-final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Proyecto final
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../recursos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Recursos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bibliografia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bibliografía
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-una-pregunta-que-el-modelo-no-puede-resolver-solo" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Una pregunta que el modelo no puede resolver solo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-elegir-y-describir-fuentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Elegir y describir fuentes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Elegir y describir fuentes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#autoridad-vigencia-y-permisos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Autoridad, vigencia y permisos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-recuperar-fragmentos-pertinentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Recuperar fragmentos pertinentes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Recuperar fragmentos pertinentes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#del-documento-a-los-fragmentos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Del documento a los fragmentos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preparar-los-fragmentos-para-poder-encontrarlos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preparar los fragmentos para poder encontrarlos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distintas-formas-de-recuperar-informacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distintas formas de recuperar información
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#busqueda-semantica-y-representaciones-vectoriales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Búsqueda semántica y representaciones vectoriales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recuperar-no-significa-todavia-responder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recuperar no significa todavía responder
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-preparar-evidencia-para-una-respuesta" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Preparar evidencia para una respuesta
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ejemplos-para-analizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Ejemplos para analizar
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-sintesis-y-comprobacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Síntesis y comprobación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Síntesis y comprobación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lecturas-de-referencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecturas de referencia
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="tema-4-incorporacion-y-recuperacion-de-conocimiento">Tema 4. Incorporación y recuperación de conocimiento</h1>
+<p><strong>Dedicación estimada: 3 horas.</strong> Incluye lectura, análisis de dos ejemplos y comprobación. La <a href="../../actividades/actividad3-prototipo-con-conocimiento/">Actividad 3</a> tiene una dedicación propia de cinco horas.</p>
+<table>
+<thead>
+<tr>
+<th>Recorrido</th>
+<th style="text-align: right;">Tiempo orientativo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Por qué un sistema necesita conocimiento externo</td>
+<td style="text-align: right;">25 min</td>
+</tr>
+<tr>
+<td>2. Elegir y describir fuentes</td>
+<td style="text-align: right;">35 min</td>
+</tr>
+<tr>
+<td>3. Recuperar fragmentos pertinentes</td>
+<td style="text-align: right;">45 min</td>
+</tr>
+<tr>
+<td>4. Preparar evidencia para responder</td>
+<td style="text-align: right;">30 min</td>
+</tr>
+<tr>
+<td>5. Ejemplos de selección y recuperación</td>
+<td style="text-align: right;">30 min</td>
+</tr>
+<tr>
+<td>6. Síntesis y comprobación</td>
+<td style="text-align: right;">15 min</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>180 min</strong></td>
+</tr>
+</tbody>
+</table>
+<p>El <a href="../../../bloque1/">Bloque I</a> abordó instrucciones, contexto y continuidad. Ahora aparece una necesidad distinta: responder sobre información que <strong>no debe suponerse presente en los parámetros del modelo</strong>, como una instrucción que ha cambiado esta semana o un conjunto de documentos propios. Incorporar conocimiento externo significa identificar las fuentes adecuadas y hacer llegar a la interacción la información pertinente. En este tema nos concentramos en <strong>la selección y recuperación</strong>; el <a href="../tema5-sistemas-rag/">Tema 5</a> integrará esos resultados en un sistema RAG.</p>
+<p><strong>Al finalizar podrás</strong> distinguir fuente y respuesta, valorar autoridad y vigencia de documentos, comparar formas sencillas de recuperación y reconocer cuándo la información encontrada no basta para contestar.</p>
+<h2 id="1-una-pregunta-que-el-modelo-no-puede-resolver-solo">1. Una pregunta que el modelo no puede resolver solo</h2>
+<p>Imaginemos un laboratorio universitario que participa en un proyecto de investigación en el que se recogen y analizan muestras biológicas. El equipo utiliza distintos procedimientos internos para garantizar que las muestras se obtienen, conservan y transportan correctamente. Una investigadora que acaba de incorporarse al proyecto necesita preparar una nueva recogida y pregunta: «¿Qué versión del protocolo de recogida de muestras se aplica al proyecto actual?».</p>
+<p>Un modelo generativo puede describir procedimientos habituales para la recogida de muestras, pero no tiene por qué conocer el protocolo interno del laboratorio ni disponer de su versión vigente. Incluso si durante su entrenamiento hubiera procesado información semejante, no hay base para confiar en que conozca el documento concreto aprobado para ese proyecto.</p>
+<p>La aplicación puede intervenir: consultar un repositorio autorizado, recuperar el documento del proyecto, localizar la información relevante y aportar el fragmento correspondiente a la petición. Este recorrido obliga a separar tres cuestiones: <strong>qué fuente se permite consultar</strong>, <strong>qué fragmento responde a la pregunta</strong> y <strong>qué se puede afirmar a partir de él</strong>. Un error en cualquiera de las tres puede producir una respuesta convincente pero equivocada.</p>
+<details>
+<summary><strong>¿No bastaría con adjuntar todos los documentos?</strong></summary>
+
+En un caso pequeño puede funcionar adjuntar unos pocos archivos. Cuando hay muchas versiones, contenido extenso o accesos diferentes, hace falta seleccionar. Aun cuando todo quepa en la ventana de contexto, el sistema debe poder justificar qué versión utilizó y si el fragmento era pertinente. Más información disponible no garantiza mejor evidencia.
+
+</details>
+
+<h2 id="2-elegir-y-describir-fuentes">2. Elegir y describir fuentes</h2>
+<p>Una <strong>base de conocimiento</strong> es el conjunto organizado de fuentes que una aplicación puede utilizar para localizar información sobre un ámbito determinado. Puede incluir, por ejemplo, documentos, páginas web, manuales o registros internos. No es solo una carpeta llena de archivos: las fuentes deben estar <strong>identificadas, autorizadas y mantenidas</strong> para la finalidad del sistema.</p>
+<p>Antes de incorporar documentos a una base de conocimiento, conviene <strong>describir cada fuente de forma explícita</strong>. No basta con saber qué contiene: también necesitamos identificar quién es responsable de ella, cuál es su versión vigente, a qué ámbito se aplica, quién puede consultarla y dónde se encuentra el original. La siguiente tabla muestra algunos de los datos que pueden utilizarse para caracterizar una fuente antes de integrarla en el sistema.</p>
+<table>
+<thead>
+<tr>
+<th>Dato sobre la fuente</th>
+<th>Pregunta que resuelve</th>
+<th>Ejemplo ficticio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Identificador y título</td>
+<td>¿Qué documento es?</td>
+<td>PROT-07, «Recogida de muestras».</td>
+</tr>
+<tr>
+<td>Responsable</td>
+<td>¿Quién puede corregirlo?</td>
+<td>Coordinación del laboratorio.</td>
+</tr>
+<tr>
+<td>Versión y fecha</td>
+<td>¿Cuál es la vigente?</td>
+<td>v3, revisión de septiembre.</td>
+</tr>
+<tr>
+<td>Ámbito</td>
+<td>¿A qué proyecto se aplica?</td>
+<td>Estudio piloto A.</td>
+</tr>
+<tr>
+<td>Acceso</td>
+<td>¿Quién puede consultarlo?</td>
+<td>Equipo autorizado.</td>
+</tr>
+<tr>
+<td>Ubicación</td>
+<td>¿Dónde está el original?</td>
+<td>Repositorio institucional.</td>
+</tr>
+</tbody>
+</table>
+<p>Esta descripción permite distinguir entre <strong>tener documentos disponibles y disponer de fuentes adecuadas para el sistema</strong>. Identificar su procedencia, vigencia, ámbito y condiciones de acceso ayuda a decidir qué información puede utilizarse y a detectar situaciones en las que una fuente está desactualizada, no corresponde al caso consultado o no debería estar disponible para determinadas personas. La selección de fuentes es, por tanto, una decisión de diseño de la base de conocimiento.</p>
+<p>Los datos que describen una fuente —por ejemplo, su título, versión, fecha, ámbito o responsable— se denominan <strong>metadatos</strong>. No constituyen necesariamente el contenido que queremos consultar, sino información sobre la propia fuente que permite identificarla, organizarla y decidir cuándo resulta aplicable.</p>
+<p>Los metadatos ayudan a evitar que dos documentos con títulos parecidos se traten como equivalentes. También permiten retirar o reemplazar material obsoleto. Si una fuente no tiene fecha o responsable identificable, quizá pueda orientar una búsqueda, pero no debería presentarse sin más como instrucción oficial.</p>
+<h3 id="autoridad-vigencia-y-permisos">Autoridad, vigencia y permisos</h3>
+<p>Para una cuestión de procedimiento, una versión aprobada por la unidad responsable tiene un valor distinto de una nota personal o de un borrador. El documento más reciente tampoco es siempre el aplicable: puede corresponder a <strong>otro proyecto</strong>. Y aunque una fuente sea correcta, el sistema no debe exponerla a personas sin acceso autorizado. La pertinencia temática no sustituye la verificación de procedencia y permisos.</p>
+<details>
+<summary><strong>Fuente primaria y fuente secundaria</strong></summary>
+
+La instrucción oficial de un proyecto es una fuente primaria para sus requisitos. Un resumen elaborado por una persona del equipo puede ayudar a localizarla, pero una respuesta sobre un plazo debería contrastarse con el original vigente. La relación cambia según la pregunta: para estudiar cómo se interpretó una instrucción, el resumen también podría ser el objeto de análisis.
+
+</details>
+
+<details>
+<summary><strong>💡 Metáfora · El horario del vuelo</strong></summary>
+
+<div style="background-color: #FFF9EC; padding: 12px 16px;">
+
+Imagina que una persona te dice que tu vuelo sale a las ocho de la mañana. Esa información puede ser útil y quizá sea correcta, pero si necesitas saber <strong>con certeza</strong> a qué hora debes estar en el aeropuerto, consultarás la información actualizada de la compañía aérea o tu tarjeta de embarque.
+
+La persona que te informó actúa como una <strong>fuente secundaria</strong>: transmite o resume una información procedente de otro lugar. La información oficial del vuelo funciona como <strong>fuente primaria</strong> para comprobar el horario vigente.
+
+Esto no significa que una fuente secundaria sea poco útil. Puede ayudarnos a localizar, resumir o comprender la información. La cuestión es <strong>qué fuente debemos utilizar para responder a cada pregunta</strong>.
+
+</div>
+
+</details>
+
+<p><img alt="Metadatos de una fuente de conocimiento" src="../../../assets/images/tema4-fuentes.png" style="display:block; margin:auto;" width="450" /></p>
+<p><small><strong>Imagen.</strong> <em>Comprobación de la adecuación de una fuente según su versión, ámbito, fecha y responsabilidad.</em></small></p>
+<h2 id="3-recuperar-fragmentos-pertinentes">3. Recuperar fragmentos pertinentes</h2>
+<p>Supongamos que un laboratorio universitario utiliza el protocolo ficticio <strong>PROT-07, «Recogida de muestras»</strong>, para establecer cómo debe actuar el personal investigador durante la recogida, conservación y transporte de las muestras de un proyecto. El protocolo forma parte de la documentación interna del laboratorio y se actualiza cuando cambian los procedimientos. Hemos seleccionado este documento como fuente y comprobado que corresponde a la versión vigente del proyecto.</p>
+<p>Si el documento es extenso, no siempre resulta conveniente utilizarlo completo cada vez que alguien formula una pregunta. Podemos prepararlo para que el sistema pueda localizar únicamente las partes que resulten relevantes.</p>
+<h3 id="del-documento-a-los-fragmentos">Del documento a los fragmentos</h3>
+<p>Una forma de preparar el contenido consiste en dividirlo en unidades más pequeñas denominadas <strong>fragmentos</strong> (<em>chunks</em>). Un fragmento puede corresponder, por ejemplo, a un párrafo, varios párrafos o una sección del documento. No es necesariamente una división que ya exista en la fuente: es una unidad que se crea para facilitar la recuperación posterior de información.</p>
+<p>En un sistema real, quien lo diseña establece la <strong>estrategia de fragmentación</strong> (<em>chunking</em>), pero normalmente no separa manualmente cada fragmento. El software puede procesar los documentos siguiendo las reglas definidas: respetar párrafos o secciones, utilizar una longitud aproximada o mantener cierto solapamiento entre fragmentos para evitar que una información importante quede separada de su contexto.</p>
+<p>Por ejemplo, una versión simplificada de PROT-07 podría dar lugar a fragmentos como estos:</p>
+<pre><code class="language-text">FUENTE
+PROT-07 · Recogida de muestras · v3
+
+FRAGMENTO 1
+Preparación de las muestras
+Las muestras deberán identificarse antes de iniciar
+el procedimiento...
+
+FRAGMENTO 2
+Conservación
+Las muestras deberán mantenerse refrigeradas hasta
+su traslado...
+
+FRAGMENTO 3
+Transporte
+El transporte al laboratorio deberá realizarse antes
+de que transcurran...
+</code></pre>
+<p>Los tres fragmentos proceden de la misma fuente y deben conservar información que permita identificar su origen. Ante una consulta concreta, el sistema podrá intentar recuperar aquellos que estén relacionados con la pregunta sin tener que utilizar necesariamente el documento completo.</p>
+<p>El tamaño y los límites de los fragmentos constituyen una decisión de diseño. Un fragmento demasiado pequeño puede perder información necesaria para interpretar su contenido; uno demasiado grande puede mezclar temas diferentes y dificultar la recuperación. Por ello, no existe un tamaño adecuado para todos los documentos y situaciones.</p>
+<details>
+<summary><strong>💡 Metáfora · Las páginas de un libro</strong></summary>
+
+<div style="background-color: #FFF9EC; padding: 12px 16px;">
+
+Imagina una biblioteca en la que, para localizar rápidamente una información, pudiéramos consultar por separado determinadas páginas de los libros. Sería mucho más rápido que revisar cada libro completo.
+
+Pero esas páginas solo serían realmente útiles si conserváramos <strong>de qué libro proceden, a qué capítulo pertenecen y dónde estaban situadas</strong>. Una página aislada podría contener una frase cuyo significado depende de lo explicado antes o después.
+
+Dividir un documento en fragmentos sigue una lógica parecida: permite <strong>recuperar únicamente las partes que pueden ser relevantes para una consulta</strong>, pero cada fragmento debe mantener su relación con la fuente original y suficiente contexto para poder interpretarlo correctamente.
+
+</div>
+
+</details>
+
+<h3 id="preparar-los-fragmentos-para-poder-encontrarlos">Preparar los fragmentos para poder encontrarlos</h3>
+<p>Una vez creados los fragmentos, necesitamos poder localizarlos cuando llegue una consulta. Para ello se prepara una estructura que permita buscarlos, que podemos denominar de forma general <strong>índice</strong>. No se trata necesariamente del índice de capítulos que encontramos al comienzo de un libro, sino de una estructura preparada para localizar posteriormente información dentro de una colección.</p>
+<details>
+<summary><strong>💡 Metáfora · El catálogo de una biblioteca</strong></summary>
+
+<div style="background-color: #FFF9EC; padding: 12px 16px;">
+
+Una biblioteca puede contener miles de libros, pero para encontrar uno no necesitamos recorrer físicamente todas las estanterías. El <strong>catálogo</strong> organiza información que permite localizar qué materiales pueden interesarnos y dónde encontrarlos.
+
+Un índice utilizado por un sistema de recuperación cumple una función parecida. Los documentos ya han sido preparados y el sistema dispone de una estructura que le permite <strong>localizar qué fragmentos pueden estar relacionados con una consulta</strong> sin tener que revisar desde cero todo el contenido cada vez que alguien formula una pregunta.
+
+</div>
+
+</details>
+
+<p>Dependiendo del sistema, el índice puede facilitar búsquedas por palabras, por significado o mediante características asociadas a los fragmentos. Los metadatos que hemos descrito anteriormente —como versión, fecha, ámbito o procedencia— también pueden utilizarse para limitar qué contenido puede recuperarse.</p>
+<p>Es importante distinguir dos operaciones:</p>
+<ul>
+<li><strong>Fragmentar</strong> significa preparar previamente los documentos dividiéndolos en unidades que puedan recuperarse.</li>
+<li><strong>Recuperar</strong> significa seleccionar, cuando llega una consulta, qué fragmentos de los disponibles pueden ser útiles para responderla.</li>
+</ul>
+<p>Por tanto, los fragmentos no se crean de nuevo para cada pregunta. El sistema dispone de contenido previamente preparado y, ante una consulta, busca qué partes resultan pertinentes.</p>
+<h3 id="distintas-formas-de-recuperar-informacion">Distintas formas de recuperar información</h3>
+<p>Una vez organizada la base de conocimiento, el sistema necesita decidir cómo localizar la información relevante para cada consulta. No todas las estrategias de búsqueda funcionan del mismo modo: algunas buscan coincidencias entre términos, otras intentan recuperar fragmentos relacionados por su significado y otras utilizan características de las propias fuentes para restringir los resultados. Cada método aporta ventajas, pero también puede recuperar información inadecuada o dejar fuera contenido relevante. La siguiente tabla compara estas estrategias atendiendo a qué buscan, qué ventajas pueden aportar y qué problemas pueden presentar.</p>
+<table>
+<thead>
+<tr>
+<th>Método</th>
+<th>Qué busca</th>
+<th>Ejemplo de ventaja</th>
+<th>Posible fallo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Búsqueda por palabras</td>
+<td>Coincidencias de términos.</td>
+<td>Encuentra una referencia exacta a «PROT-07».</td>
+<td>Puede no recuperar un sinónimo.</td>
+</tr>
+<tr>
+<td>Búsqueda semántica</td>
+<td>Fragmentos relacionados por su significado.</td>
+<td>Puede relacionar «plazo» con «fecha límite».</td>
+<td>Puede traer un texto parecido pero de otro ámbito.</td>
+</tr>
+<tr>
+<td>Filtros por metadatos</td>
+<td>Fuentes que cumplen determinadas condiciones.</td>
+<td>Limita a la versión vigente del proyecto A.</td>
+<td>Metadatos incorrectos ocultan o incluyen documentos.</td>
+</tr>
+<tr>
+<td>Combinación y reordenación</td>
+<td>Integra diferentes señales y revisa los candidatos recuperados.</td>
+<td>Distingue coincidencia literal y pertinencia.</td>
+<td>Añade complejidad sin resolver fuentes defectuosas.</td>
+</tr>
+</tbody>
+</table>
+<p>Estas estrategias pueden combinarse para mejorar la recuperación. Una búsqueda puede localizar candidatos por su significado y, al mismo tiempo, aplicar filtros que limiten los resultados a determinadas versiones, fechas o ámbitos. El objetivo no es recuperar la mayor cantidad posible de información, sino seleccionar los fragmentos más pertinentes y adecuados para la consulta que debe resolver el sistema.</p>
+<h3 id="busqueda-semantica-y-representaciones-vectoriales">Búsqueda semántica y representaciones vectoriales</h3>
+<p>La búsqueda por palabras resulta útil cuando conocemos los términos que aparecen en el documento. Sin embargo, una misma idea puede expresarse de formas diferentes. Una persona podría preguntar «¿Puedo cambiar la fecha del seminario?» mientras que el documento utiliza la expresión «modificación de la programación».</p>
+<p>La <strong>búsqueda semántica</strong> intenta localizar contenido relacionado por su significado, aunque la consulta y el documento no utilicen exactamente las mismas palabras. Para hacerlo, el contenido de los fragmentos y de la consulta puede transformarse en una representación numérica denominada habitualmente <strong>embedding</strong>. Estas representaciones son vectores que permiten estimar qué contenidos se encuentran próximos por su significado.</p>
+<p>Esta transformación se realiza automáticamente mediante un modelo preparado para generar estas representaciones; quien diseña el sistema no tiene que escribir manualmente los valores del vector.</p>
+<p>No necesitamos calcular estos vectores en este tema. Lo importante es comprender la idea: el sistema puede comparar la representación de una pregunta con las representaciones de los fragmentos disponibles para localizar aquellos que parecen semánticamente relacionados.</p>
+<p>Sin embargo, «se parece a la pregunta» no significa «contiene la respuesta correcta». Un fragmento sobre otro curso, otra versión o un procedimiento diferente puede estar muy próximo semánticamente y, aun así, ser inaplicable. Por ello, la búsqueda semántica puede combinarse con filtros por metadatos y con otras comprobaciones.</p>
+<h3 id="recuperar-no-significa-todavia-responder">Recuperar no significa todavía responder</h3>
+<p>Volvamos a la pregunta «¿Puedo cambiar la fecha del seminario?». El sistema podría recuperar un fragmento que habla de «modificación de la programación». Ese resultado es un candidato relevante, pero todavía debemos comprobar qué afirma realmente: puede explicar cómo <strong>solicitar un cambio</strong>, quién puede <strong>autorizarlo</strong> o simplemente cómo debe <strong>comunicarse</strong> una modificación ya aprobada.</p>
+<p>Recuperar un fragmento pertinente es, por tanto, un paso para obtener la información necesaria, pero no garantiza por sí solo que dispongamos de evidencia suficiente para responder. En el siguiente apartado veremos cómo comprobar los fragmentos recuperados antes de utilizarlos para fundamentar una respuesta.</p>
+<h2 id="4-preparar-evidencia-para-una-respuesta">4. Preparar evidencia para una respuesta</h2>
+<p>En este contexto llamaremos <strong>evidencia</strong> a la información recuperada de las fuentes que, después de comprobar su procedencia, vigencia y relación con la consulta, puede utilizarse para fundamentar una respuesta. Por tanto, <strong>un fragmento recuperado no constituye automáticamente evidencia suficiente</strong>: primero debemos comprobar qué afirma realmente y si resulta aplicable al caso.</p>
+<p>Después de buscar conviene revisar si los resultados son <strong>suficientes</strong>, <strong>compatibles</strong> y <strong>autorizados</strong>. Un pasaje que menciona una fecha no confirma necesariamente de qué entrega se trata. Dos fuentes que se contradicen pueden indicar un cambio de versión o un conflicto pendiente. La aplicación debería ofrecer al modelo el fragmento, su procedencia y la pregunta, manteniendo distinguibles <strong>instrucciones del sistema</strong> y <strong>contenido de los documentos</strong>.</p>
+<p>Una ficha mínima de evidencia puede contener: pregunta, documento y versión, pasaje localizado, sección o página, fecha de consulta y duda pendiente. Esto permite comprobar después qué se usó. No es una promesa de que el modelo citará bien: habrá que comparar la respuesta con el fragmento original.</p>
+<details>
+<summary><strong>¿Qué hacer si no aparece evidencia suficiente?</strong></summary>
+
+Declarar que no se ha localizado una base fiable para responder, solicitar precisión sobre la pregunta o derivar la consulta a la fuente responsable. Una respuesta general del modelo puede ser útil como explicación de un concepto, pero no debe disfrazarse de dato confirmado del repositorio.
+
+</details>
+
+<details>
+<summary><strong>💡 Metáfora · Las piezas antes de montar el puzle</strong></summary>
+
+<div style="background-color: #FFF9EC; padding: 12px 16px;">
+
+Imagina que intentas reconstruir una imagen a partir de las piezas de un puzle. Haber encontrado varias piezas no significa que ya puedas saber qué muestra la imagen: algunas pueden pertenecer a otra zona, faltar piezas importantes o incluso haberse mezclado piezas de otro puzle.
+
+Preparar la evidencia para una respuesta se parece a <strong>comprobar las piezas antes de utilizarlas</strong>. Hay que verificar que corresponden al problema que queremos resolver, que son compatibles entre sí y que disponemos de suficientes elementos para sostener la interpretación.
+
+Si faltan piezas esenciales, lo adecuado no es imaginar qué debería haber en el hueco, sino <strong>reconocer qué información falta</strong>. Del mismo modo, un sistema de IA generativa no debería convertir una evidencia insuficiente en una respuesta aparentemente confirmada.
+
+</div>
+
+</details>
+
+<p><img alt="Selección de fragmentos con procedencia" src="../../../assets/images/tema4-recuperacion.png" style="display:block; margin:auto;" width="500" /></p>
+<p><small><strong>Imagen.</strong> <em>Selección y comprobación de la evidencia necesaria para fundamentar una respuesta.</em></small></p>
+<h2 id="5-ejemplos-para-analizar">5. Ejemplos para analizar</h2>
+<p>Los dos casos son ficticios y están desarrollados en archivos aparte:</p>
+<ol>
+<li><a href="../ejemplos/tema4-ejemplo1-versiones-protocolo/">Ejemplo 1. Dos versiones de un protocolo de proyecto</a>. Permite decidir qué documento es aplicable antes de buscar dentro de él.</li>
+<li><a href="../ejemplos/tema4-ejemplo2-busqueda-ambigua/">Ejemplo 2. Una búsqueda que encuentra el pasaje equivocado</a>. Compara coincidencia temática y evidencia suficiente.</li>
+</ol>
+<p>Durante la lectura identifica un dato de procedencia que evita un error y una pregunta que el sistema todavía no debería responder.</p>
+<h2 id="6-sintesis-y-comprobacion">6. Síntesis y comprobación</h2>
+<p>Incorporar conocimiento externo supone <strong>seleccionar y describir las fuentes, preparar su contenido para poder localizarlo, recuperar los fragmentos pertinentes y comprobar si proporcionan evidencia suficiente</strong>. El proceso puede resumirse así:</p>
+<p><strong>fuentes → metadatos → fragmentación → indexación → consulta → recuperación → comprobación de la evidencia</strong></p>
+<p>La calidad de la recuperación no se mide solo por encontrar texto relacionado, sino por aportar información aplicable, vigente y verificable. En el siguiente tema veremos cómo incorporar la evidencia recuperada al contexto del modelo para generar una respuesta.</p>
+<ol>
+<li>¿Por qué un fragmento muy similar a la pregunta podría ser inadecuado?</li>
+<li>¿Qué metadatos mínimos guardarías para diferenciar dos versiones de una guía?</li>
+<li>Si dos documentos oficiales vigentes ofrecen requisitos distintos, ¿debería escoger el sistema uno por su cuenta?</li>
+<li>¿Qué diferencia una fuente disponible en el repositorio de un fragmento que llega al modelo en la petición actual?</li>
+</ol>
+<details>
+<summary><strong>Orientaciones de respuesta</strong></summary>
+
+<p>1. Puede corresponder a otro curso, otra versión o un ámbito diferente.</p>
+<p>2. Identificador, versión, fecha, ámbito, responsable y referencia al original.</p>
+<p>3. No sin una regla de precedencia autorizada; hay que señalar el conflicto y consultar a quien corresponda.</p>
+<p>4. La selección y el acceso son pasos separados: el modelo solo puede utilizar el material efectivamente aportado por la aplicación o por una herramienta disponible.</p>
+
+</details>
+
+<p><strong>Para continuar:</strong> el <a href="../tema5-sistemas-rag/">Tema 5</a> estudia cómo integrar la recuperación con la generación de respuestas; la <a href="../../actividades/actividad3-prototipo-con-conocimiento/">Actividad 3</a> permitirá probar un prototipo con fuentes controladas.</p>
+<h3 id="lecturas-de-referencia">Lecturas de referencia</h3>
+<ul>
+<li><a href="https://developers.openai.com/api/docs/guides/retrieval">OpenAI: recuperación y búsqueda semántica</a>. Ejemplo de indexación y búsqueda sobre archivos.</li>
+<li><a href="https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview">Microsoft Learn: introducción a RAG</a>. Relación entre recuperación, fuentes y generación.</li>
+</ul>
+<p><a href="../../">Volver a la presentación del bloque</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>

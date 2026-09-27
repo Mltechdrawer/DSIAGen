@@ -1,0 +1,1803 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Microcredencial universitaria de 3 ECTS">
+      
+      
+      
+      
+        <link rel="prev" href="../../">
+      
+      
+        <link rel="next" href="../tema2-prompts-e-interaccion/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Tema 1. Modelos y sistemas - Diseño de Sistemas de Inteligencia Artificial Generativa</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tema-1-de-los-modelos-generativos-a-los-sistemas-de-ia" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../.." title="Diseño de Sistemas de Inteligencia Artificial Generativa" class="md-header__button md-logo" aria-label="Diseño de Sistemas de Inteligencia Artificial Generativa" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Diseño de Sistemas de Inteligencia Artificial Generativa
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tema 1. Modelos y sistemas
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Diseño de Sistemas de Inteligencia Artificial Generativa" class="md-nav__button md-logo" aria-label="Diseño de Sistemas de Inteligencia Artificial Generativa" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Diseño de Sistemas de Inteligencia Artificial Generativa
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    La microcredencial
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            La microcredencial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microcredencial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Presentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microcredencial/resultados-de-aprendizaje/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Resultados de aprendizaje
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microcredencial/organizacion-y-metodologia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Organización y metodología
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Bloque I. Interacción y contexto
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Bloque I. Interacción y contexto
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Presentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Teoría
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Teoría
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Tema 1. Modelos y sistemas
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 1. Modelos y sistemas
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-una-necesidad-dos-maneras-de-abordarla" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Una necesidad, dos maneras de abordarla
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-que-hace-un-modelo-generativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Qué hace un modelo generativo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Qué hace un modelo generativo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#capacidad-y-fiabilidad-son-preguntas-diferentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Capacidad y fiabilidad son preguntas diferentes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-que-anade-un-sistema-de-ia-generativa" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Qué añade un sistema de IA generativa
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Qué añade un sistema de IA generativa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#un-recorrido-visible-y-otro-interno" class="md-nav__link">
+    <span class="md-ellipsis">
+      Un recorrido visible y otro interno
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-decisiones-de-diseno-y-limites" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Decisiones de diseño y límites
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Decisiones de diseño y límites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pensar-en-el-fallo-desde-el-principio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pensar en el fallo desde el principio
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-dos-ejemplos-desarrollados" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Dos ejemplos desarrollados
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-sintesis-y-comprobacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Síntesis y comprobación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Síntesis y comprobación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lecturas-para-ampliar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecturas para ampliar
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tema2-prompts-e-interaccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 2. Prompts e interacción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tema3-contexto-y-memoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 3. Contexto y memoria
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Actividades
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Actividades
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../actividades/actividad1-prompts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad 1. Prompts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../actividades/actividad2-interaccion-contextual/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad 2. Interacción contextual
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Bloque II. Conocimiento y automatización
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Bloque II. Conocimiento y automatización
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Presentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Teoría
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Teoría
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque2/teoria/tema4-conocimiento-externo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 4. Conocimiento externo
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque2/teoria/tema5-sistemas-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 5. Sistemas RAG
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque2/teoria/tema6-automatizacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 6. Automatización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Actividades
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Actividades
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque2/actividades/actividad3-prototipo-con-conocimiento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad 3. Prototipo con conocimiento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque2/actividades/actividad4-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad 4. Workflow con IA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Bloque III. Diseño y evaluación
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Bloque III. Diseño y evaluación
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Presentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Teoría
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Teoría
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque3/teoria/tema7-arquitectura-e-integracion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 7. Arquitectura e integración
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque3/teoria/tema8-calidad-y-evaluacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 8. Calidad y evaluación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque3/actividades/actividad5-integracion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad de integración
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../proyecto-final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Proyecto final
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../recursos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Recursos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bibliografia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bibliografía
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-una-necesidad-dos-maneras-de-abordarla" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Una necesidad, dos maneras de abordarla
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-que-hace-un-modelo-generativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Qué hace un modelo generativo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Qué hace un modelo generativo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#capacidad-y-fiabilidad-son-preguntas-diferentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Capacidad y fiabilidad son preguntas diferentes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-que-anade-un-sistema-de-ia-generativa" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Qué añade un sistema de IA generativa
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Qué añade un sistema de IA generativa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#un-recorrido-visible-y-otro-interno" class="md-nav__link">
+    <span class="md-ellipsis">
+      Un recorrido visible y otro interno
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-decisiones-de-diseno-y-limites" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Decisiones de diseño y límites
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Decisiones de diseño y límites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pensar-en-el-fallo-desde-el-principio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pensar en el fallo desde el principio
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-dos-ejemplos-desarrollados" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Dos ejemplos desarrollados
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-sintesis-y-comprobacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Síntesis y comprobación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Síntesis y comprobación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lecturas-para-ampliar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecturas para ampliar
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="tema-1-de-los-modelos-generativos-a-los-sistemas-de-ia">Tema 1. De los modelos generativos a los sistemas de IA</h1>
+<p><strong>Dedicación estimada: 3 horas.</strong> Incluye lectura, exploración de los dos ejemplos y comprobación de lo aprendido. Las actividades del bloque tienen su propia dedicación y no se cuentan aquí.</p>
+<table>
+<thead>
+<tr>
+<th>Recorrido</th>
+<th style="text-align: right;">Tiempo orientativo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Una necesidad, dos maneras de abordarla</td>
+<td style="text-align: right;">20 min</td>
+</tr>
+<tr>
+<td>2. Qué hace un modelo generativo</td>
+<td style="text-align: right;">40 min</td>
+</tr>
+<tr>
+<td>3. Qué añade un sistema de IA</td>
+<td style="text-align: right;">45 min</td>
+</tr>
+<tr>
+<td>4. Decisiones de diseño y límites</td>
+<td style="text-align: right;">30 min</td>
+</tr>
+<tr>
+<td>5. Dos ejemplos desarrollados</td>
+<td style="text-align: right;">30 min</td>
+</tr>
+<tr>
+<td>6. Síntesis y comprobación</td>
+<td style="text-align: right;">15 min</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>180 min</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="1-una-necesidad-dos-maneras-de-abordarla">1. Una necesidad, dos maneras de abordarla</h2>
+<p>Una profesora quiere ayudar a su alumnado a comprender una guía de trabajo final. Puede copiar la pregunta de un estudiante en un asistente de IA y pedir una explicación. También puede diseñar un servicio al que se acceda desde la página de la asignatura, que consulte la versión vigente de la guía, indique en qué apartado se basa la respuesta, reconozca cuándo no encuentra información y derive ciertos casos a la profesora.</p>
+<p>En ambas situaciones puede intervenir el mismo <strong>modelo generativo</strong>. En la primera hay una interacción puntual. En la segunda hay una finalidad definida, fuentes, reglas, una interfaz y formas de comprobar el resultado: hay un <strong>sistema de IA generativa</strong>. Este tema distingue lo que puede producir el modelo de las condiciones que debemos diseñar para usarlo en un contexto real.</p>
+<details>
+<summary><strong>Pregunta inicial: ¿en cuál de los dos casos confiarías para dar información oficial?</strong></summary>
+
+El segundo ofrece mejores condiciones si la guía está actualizada, se recupera el fragmento correcto y se revisa la respuesta. El mero hecho de incorporar documentos no garantiza que todo sea cierto. La confianza depende de fuentes y comprobaciones efectivas.
+
+</details>
+
+<p><strong>Al terminar el tema podrás</strong> diferenciar modelo y sistema, reconocer los componentes de una aplicación generativa y justificar cuándo hacen falta fuentes, controles y evaluación.</p>
+<h2 id="2-que-hace-un-modelo-generativo">2. Qué hace un modelo generativo</h2>
+<p>Un modelo generativo aprende patrones durante su entrenamiento y produce contenido nuevo a partir de una entrada. Un modelo de lenguaje puede recibir una pregunta, un documento o parte de una conversación y generar una explicación, una reformulación o una tabla. Otros modelos trabajan con imágenes o audio. Su capacidad de producir texto convincente no implica que conozca la versión vigente de una norma o las necesidades de una asignatura concreta.</p>
+<table>
+<thead>
+<tr>
+<th>Noción</th>
+<th>Significado en este curso</th>
+<th>Consecuencia para el diseño</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Entrada</strong></td>
+<td>Pregunta e información que recibe el modelo.</td>
+<td>Una pregunta ambigua deja abierta la interpretación.</td>
+</tr>
+<tr>
+<td><strong>Contexto</strong></td>
+<td>Instrucciones, mensajes y datos disponibles durante la interacción.</td>
+<td>Si la guía no se proporciona, no puede suponerse que el modelo la consulta.</td>
+</tr>
+<tr>
+<td><strong>Generación</strong></td>
+<td>Producción de la salida a partir de patrones y del contexto.</td>
+<td>Una respuesta fluida puede contener inferencias injustificadas.</td>
+</tr>
+<tr>
+<td><strong>Salida</strong></td>
+<td>Texto u otro contenido generado.</td>
+<td>Es necesario comprobar pertinencia, formato y exactitud.</td>
+</tr>
+</tbody>
+</table>
+<p>Los modelos de lenguaje procesan internamente <em>tokens</em>, unidades de texto que no siempre equivalen a palabras. No necesitamos calcularlos ahora. Sí importa saber que la cantidad de contexto procesable en una interacción es limitada y depende del modelo y su configuración. Proporcionar más texto tampoco asegura un mejor resultado: pueden existir fragmentos irrelevantes, contradictorios o desactualizados.</p>
+<p>Imaginemos la pregunta «¿Cuándo hay que entregar la memoria?». Sin la guía actualizada, el modelo podría responder con una fecha plausible que no corresponde al curso. Incluso con la guía, debe determinar a qué memoria se refiere la pregunta, distinguir una fecha definitiva de una provisional y no confundir la entrega escrita con la presentación oral.</p>
+<details>
+<summary><strong>¿El modelo busca en sus datos de entrenamiento al responder?</strong></summary>
+
+No suele consultar un archivo de documentos originales como lo haría un buscador. El entrenamiento ajusta parámetros a partir de datos; después, la respuesta se genera utilizando esos parámetros y el contexto de la interacción. Una aplicación puede añadir búsqueda de documentos actuales, pero se trata de un componente adicional del sistema.
+
+</details>
+
+<details>
+<summary><strong>¿Qué significa que un modelo sea multimodal?</strong></summary>
+
+Que, según sus capacidades, puede procesar o generar diferentes modalidades, como texto, imágenes o audio. Por ejemplo, una aplicación podría admitir una fotografía de un gráfico y pedir una explicación textual. La interpretación seguiría necesitando revisión, especialmente si el gráfico se utiliza para tomar una decisión.
+
+</details>
+
+<p><img alt="Entrada, modelo generativo y salida" src="../../../assets/images/tema1-modelo-generativo.png" style="display:block; margin:auto;" width="350" /></p>
+<p><small><strong>Imagen.</strong> <em>Del modelo de IA a la aplicación con la que interactúa el usuario.</em></small></p>
+<h3 id="capacidad-y-fiabilidad-son-preguntas-diferentes">Capacidad y fiabilidad son preguntas diferentes</h3>
+<p>Un modelo puede redactar con claridad, resumir y transformar formatos. Ninguna de esas capacidades demuestra que una afirmación sea verdadera. Conviene separar «¿se expresa bien?» de «¿podemos usar su respuesta con fundamento?». Para explicar un concepto puede bastar una revisión docente. Para comunicar una fecha oficial es necesario identificar la fuente vigente y comprobar la coincidencia exacta. Una decisión que afecte a una persona requiere criterios y supervisión adicionales.</p>
+<h2 id="3-que-anade-un-sistema-de-ia-generativa">3. Qué añade un sistema de IA generativa</h2>
+<p>Llamaremos <strong>sistema de IA generativa</strong> al conjunto de componentes y reglas que emplea uno o varios modelos para una función concreta. Puede ser pequeño o complejo. Lo decisivo es que el comportamiento final depende de decisiones que van más allá del modelo.</p>
+<p>En un servicio que responda preguntas sobre la guía, el recorrido podría ser: el estudiante escribe una pregunta; la aplicación identifica la guía vigente; un componente selecciona los fragmentos pertinentes; se construye el contexto enviado al modelo; se genera una respuesta; la aplicación comprueba el formato y presenta una referencia que la persona pueda consultar. Si no hay información suficiente, informa de ello y ofrece un canal humano. Cada paso puede fallar de una manera distinta.</p>
+<p>La siguiente tabla resume los principales <strong>componentes que pueden formar parte de una aplicación basada en IA generativa</strong>. Para cada uno se indica su función y una <strong>decisión de diseño</strong> que conviene plantearse al construir el sistema. No todas las aplicaciones necesitarán todos estos componentes: su elección y configuración dependerán del propósito, los datos y el nivel de autonomía de la solución.</p>
+<table>
+<thead>
+<tr>
+<th>Componente posible</th>
+<th>Función</th>
+<th>Decisión de diseño</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Interfaz</strong></td>
+<td>Recibe preguntas y muestra respuestas.</td>
+<td>¿Qué puede solicitar la persona usuaria?</td>
+</tr>
+<tr>
+<td><strong>Instrucciones</strong></td>
+<td>Delimitan tarea, tono y comportamiento esperado.</td>
+<td>¿Qué hacer si no hay información suficiente?</td>
+</tr>
+<tr>
+<td><strong>Modelo</strong></td>
+<td>Genera o transforma contenido.</td>
+<td>¿Qué capacidades requiere la tarea?</td>
+</tr>
+<tr>
+<td><strong>Contexto y estado</strong></td>
+<td>Mantienen información relevante de la interacción.</td>
+<td>¿Qué debe recordarse y durante cuánto tiempo?</td>
+</tr>
+<tr>
+<td><strong>Fuentes externas</strong></td>
+<td>Aportan documentos y datos.</td>
+<td>¿Qué fuente es válida y cuál es su versión?</td>
+</tr>
+<tr>
+<td><strong>Herramientas</strong></td>
+<td>Consultan servicios o ejecutan acciones.</td>
+<td>¿Con qué permisos y confirmaciones?</td>
+</tr>
+<tr>
+<td><strong>Comprobación</strong></td>
+<td>Contrasta las salidas y registra problemas.</td>
+<td>¿Qué errores deben detectarse?</td>
+</tr>
+<tr>
+<td><strong>Responsables</strong></td>
+<td>Atienden incidencias y actualizan el servicio.</td>
+<td>¿Quién supervisa el resultado?</td>
+</tr>
+</tbody>
+</table>
+<p>La tabla es una guía de posibles componentes, no una lista de requisitos obligatorios. Para reformular un texto aportado por la persona usuaria quizá no hacen falta fuentes externas. Para responder sobre una normativa cambiante sí pueden resultar imprescindibles.</p>
+<p><img alt="Componentes de un sistema de IA generativa" src="../../../assets/images/tema1-sistema-ia.png" style="display:block; margin:auto;" width="450" /></p>
+<p><small><strong>Imagen.</strong> <em>Flujo de interacción entre la persona usuaria, la aplicación y el modelo generativo.</em></small></p>
+<details>
+<summary><strong>¿Una conversación en una aplicación comercial ya es un sistema?</strong></summary>
+
+Sí. El producto tiene interfaz, modelo y otros componentes. La diferencia didáctica es <strong>qué parte diseña quien hace la consulta</strong>. Una conversación individual utiliza un sistema existente; crear un servicio para una institución exige definir sus fuentes, permisos, pruebas y responsables.
+
+</details>
+
+<details>
+<summary><strong>¿Basta con escribir instrucciones muy precisas?</strong></summary>
+
+Las buenas instrucciones ayudan a encuadrar la tarea y serán el centro del Tema 2. Por sí solas no incorporan la versión actualizada de una norma, no verifican las citas ni impiden todos los errores. Si la necesidad exige datos actuales, control de acceso o comprobación independiente, habrá que diseñar esos componentes.
+
+</details>
+
+<h3 id="un-recorrido-visible-y-otro-interno">Un recorrido visible y otro interno</h3>
+<p>Para quien pregunta, la experiencia puede reducirse a escribir y leer. Internamente se seleccionan documentos, se decide qué información enviar al modelo y se controla cómo presentar el resultado. Un buen diseño hace comprensible a la persona usuaria lo que necesita saber: qué tipo de preguntas puede resolver el servicio, de dónde procede la respuesta y cuándo acudir a una persona responsable.</p>
+<p>Esta distinción ayuda a localizar fallos. Una fecha equivocada puede proceder de un documento desactualizado, una recuperación incorrecta, una pregunta ambigua o una interpretación errónea del modelo. Sustituir el modelo sin investigar la causa podría dejar el problema intacto.</p>
+<h2 id="4-decisiones-de-diseno-y-limites">4. Decisiones de diseño y límites</h2>
+<p>«Crear un chatbot para la asignatura» es una solución posible. «El alumnado no encuentra con facilidad los requisitos vigentes del trabajo final» expresa una necesidad. Formular primero la necesidad permite comparar soluciones, incluida una página clara de preguntas frecuentes.</p>
+<p>Utilizaremos un <strong>chatbot basado en IA generativa</strong> como primer ejemplo. Un chatbot no es, por definición, un sistema de IA generativa: puede construirse mediante reglas u otras técnicas. En nuestro ejemplo, sin embargo, incorporaremos un modelo generativo y algunos componentes adicionales para <strong>plantear un sistema de IA generativa muy sencillo</strong>. Esto nos permitirá identificar sus elementos básicos antes de abordar sistemas más complejos.</p>
+<p>La siguiente tabla concreta las <strong>primeras decisiones de diseño</strong> para el sistema de IA generativa del ejemplo. Antes de decidir cómo implementarlo, es necesario delimitar <strong>quién lo utilizará, qué podrá resolver, qué quedará fuera de su alcance y qué fuentes podrá emplear</strong>. También se establece cómo deberá actuar ante situaciones de incertidumbre y cómo se comprobará posteriormente que sus respuestas son adecuadas.</p>
+<table>
+<thead>
+<tr>
+<th>Pregunta inicial</th>
+<th>Respuesta posible para el ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>¿Quién lo usará y para qué?</td>
+<td>Estudiantes que buscan requisitos del trabajo final.</td>
+</tr>
+<tr>
+<td>¿Qué puede resolver?</td>
+<td>Cuestiones tratadas en documentos publicados y vigentes.</td>
+</tr>
+<tr>
+<td>¿Qué queda fuera?</td>
+<td>Calificar trabajos, resolver casos personales o cambiar plazos.</td>
+</tr>
+<tr>
+<td>¿Qué fuentes utilizará?</td>
+<td>Guía del curso e instrucciones oficiales autorizadas.</td>
+</tr>
+<tr>
+<td>¿Qué hará cuando dude?</td>
+<td>Indicar que no puede confirmar la respuesta y dónde consultar.</td>
+</tr>
+<tr>
+<td>¿Cómo se comprobará?</td>
+<td>Pruebas con respuestas esperadas y revisión de las referencias.</td>
+</tr>
+</tbody>
+</table>
+<p>Esto obliga a concretar <strong>alcance</strong>, <strong>procedencia de la información</strong> y <strong>responsabilidad</strong>. Si una respuesta cita una fuente, debe ser posible identificarla y verificarla. Si aparece un error, alguien debe poder actualizar el contenido o intervenir.</p>
+<details>
+<summary><strong>Una afirmación convincente pero incorrecta</strong></summary>
+
+El sistema responde «La entrega termina el 30 de junio». Pero el 30 de junio corresponde a la exposición y la memoria se entrega el 20 de junio. Hay que localizar el apartado pertinente, aclarar cuál de las dos entregas pregunta el estudiante y contrastar la respuesta. Solicitar al modelo «sé preciso» no realiza automáticamente estas comprobaciones.
+
+</details>
+
+<details>
+<summary><strong>¿Qué cambia si el sistema puede actuar?</strong></summary>
+
+Responder una duda y modificar una reserva de tutoría tienen consecuencias distintas. Para ejecutar acciones hacen falta permisos delimitados, confirmaciones, registro de lo sucedido y manejo de errores. Más adelante estudiaremos herramientas y automatización. Por ahora importa distinguir <strong>generar una propuesta</strong> de <strong>efectuar una acción</strong>.
+
+</details>
+
+<details>
+<summary><strong>💡 Metáfora · Del consejo a la acción</strong></summary>
+
+<div style="background-color: #FFF9EC; padding: 12px 16px;">
+
+Pedir consejo sobre qué plato elegir en un restaurante no es lo mismo que pedir que hagan el pedido por nosotros. En el primer caso recibimos una recomendación y seguimos teniendo el control sobre la decisión. En el segundo, alguien actúa en nuestro nombre y la decisión tiene consecuencias reales.
+
+Del mismo modo, un sistema puede <strong>generar una propuesta</strong> o puede estar autorizado para <strong>ejecutar una acción</strong>. En este último caso necesitamos establecer claramente qué puede hacer, cuándo debe pedir confirmación y qué ocurre si algo sale mal.
+
+</div>
+
+</details>
+
+<h3 id="pensar-en-el-fallo-desde-el-principio">Pensar en el fallo desde el principio</h3>
+<p>¿Qué hace el servicio si falta la guía? ¿Y si hay dos versiones contradictorias? ¿Cómo responde a una pregunta ajena a su ámbito? Las respuestas a estas preguntas son parte del diseño. Una demostración que funciona una vez no equivale a un sistema fiable: hay que comprobar casos ordinarios, ambiguos y situaciones en las que debe reconocer que no dispone de una respuesta fundamentada.</p>
+<details>
+<summary><strong>💡 Metáfora · ¿Y si algo no sale como estaba previsto?</strong></summary>
+
+<div style="background-color: #FFF9EC; padding: 12px 16px;">
+
+Volvamos al restaurante. ¿Qué ocurre si el plato que nos han recomendado ya no está disponible? ¿Y si dos camareros nos dan información contradictoria sobre sus ingredientes? ¿O si preguntamos por algo que el restaurante no puede ofrecer? Un buen servicio no consiste únicamente en responder cuando todo sucede como estaba previsto: también debe saber <strong>cómo actuar ante la falta de información, la contradicción o una petición que queda fuera de su alcance</strong>.
+
+Del mismo modo, al diseñar un sistema de IA generativa debemos prever no solo cómo responderá en los casos habituales, sino también <strong>qué hará cuando no disponga de información suficiente o fiable para responder</strong>.
+
+</div>
+
+</details>
+
+<h2 id="5-dos-ejemplos-desarrollados">5. Dos ejemplos desarrollados</h2>
+<p>Ambos casos son <strong>ficticios</strong>. Sus fechas y documentos sirven para analizar el diseño, no para informar de una asignatura real.</p>
+<ol>
+<li><a href="../ejemplos/ejemplo1-asistente-guia-academica/">Ejemplo 1. Un asistente para consultar una guía académica</a>: compara una respuesta libre con una respuesta apoyada en fuentes comprobables.</li>
+<li><a href="../ejemplos/ejemplo2-retroalimentacion-docente/">Ejemplo 2. Una herramienta para reformular retroalimentación docente</a>: muestra un sistema pequeño sin búsqueda documental, con alcance y revisión humana definidos.</li>
+</ol>
+<p>Al leerlos, identifica la necesidad, los datos que recibe el modelo, una decisión que corresponde a la aplicación y un caso en que se deba pedir revisión.</p>
+<h2 id="6-sintesis-y-comprobacion">6. Síntesis y comprobación</h2>
+<p>La capacidad generativa indica <strong>qué contenido puede producir un modelo</strong>. El diseño del sistema establece <strong>en qué condiciones se utiliza esa capacidad</strong>, con qué información, por quién y con qué comprobaciones.</p>
+<ol>
+<li>Si dos aplicaciones usan el mismo modelo, ¿por qué pueden responder de manera distinta a la misma pregunta?</li>
+<li>¿Qué habría que añadir para contestar sobre un documento que cambia cada curso? ¿Qué conviene comprobar después?</li>
+<li>¿En qué se diferencia sugerir una respuesta de ejecutar una acción en nombre de alguien?</li>
+<li>¿Qué preguntarías antes de decidir que hay que construir un chatbot?</li>
+</ol>
+<details>
+<summary><strong>Orientaciones para contrastar las respuestas</strong></summary>
+
+<p>1. Pueden variar las instrucciones, el contexto, las fuentes, los controles y la interfaz.</p>
+<p>2. Habría que facilitar la versión vigente, comprobar su selección, el fragmento recuperado y la correspondencia con la respuesta.</p>
+<p>3. Una acción modifica un servicio o tiene efectos externos; requiere permisos, confirmaciones y tratamiento de incidencias.</p>
+<p>4. Conviene averiguar qué necesidad concreta existe y si una solución más sencilla la resuelve.</p>
+
+</details>
+
+<p><strong>Para continuar:</strong> el <a href="../tema2-prompts-e-interaccion/">Tema 2</a> desarrolla las instrucciones y la interacción; el <a href="../tema3-contexto-y-memoria/">Tema 3</a> aborda la continuidad de las conversaciones.</p>
+<h3 id="lecturas-para-ampliar">Lecturas para ampliar</h3>
+<ul>
+<li><a href="https://mltechdrawer.github.io/CompetenciaDigitalIA/bloque1/sesion2/">Competencia Digital e IA Aplicada: fundamentos de IA</a> y <a href="https://mltechdrawer.github.io/CompetenciaDigitalIA/bloque2/sesion4/">diseño de workflows</a>. Materiales docentes previos para relacionar el uso de IA con el diseño de procesos.</li>
+<li><a href="https://mltechdrawer.github.io/ChatGPT/2_IP/">ChatGPT: Ingeniería de Prompts</a>. Antecedente del trabajo específico del Tema 2.</li>
+<li><a href="https://developers.google.com/machine-learning/crash-course/llm?hl=es-419">Google for Developers: introducción a los modelos de lenguaje grandes</a>. Tokens, contexto y funcionamiento general.</li>
+<li><a href="https://developers.google.com/machine-learning/intro-to-ml/what-is-ml">Google for Developers: qué es el aprendizaje automático</a>. Marco general de la IA generativa.</li>
+<li><a href="https://genai.owasp.org/llm-top-10/">OWASP: riesgos de las aplicaciones con modelos de lenguaje</a>. Material complementario sobre riesgos del sistema.</li>
+</ul>
+<p><a href="../../">Volver a la presentación del bloque</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>

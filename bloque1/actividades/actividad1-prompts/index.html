@@ -1,0 +1,1629 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Microcredencial universitaria de 3 ECTS">
+      
+      
+      
+      
+        <link rel="prev" href="../../teoria/tema3-contexto-y-memoria/">
+      
+      
+        <link rel="next" href="../actividad2-interaccion-contextual/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Actividad 1. Prompts - Diseño de Sistemas de Inteligencia Artificial Generativa</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#actividad-1-diseno-y-evaluacion-de-prompts" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../.." title="Diseño de Sistemas de Inteligencia Artificial Generativa" class="md-header__button md-logo" aria-label="Diseño de Sistemas de Inteligencia Artificial Generativa" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Diseño de Sistemas de Inteligencia Artificial Generativa
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Actividad 1. Prompts
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Diseño de Sistemas de Inteligencia Artificial Generativa" class="md-nav__button md-logo" aria-label="Diseño de Sistemas de Inteligencia Artificial Generativa" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Diseño de Sistemas de Inteligencia Artificial Generativa
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    La microcredencial
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            La microcredencial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microcredencial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Presentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microcredencial/resultados-de-aprendizaje/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Resultados de aprendizaje
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microcredencial/organizacion-y-metodologia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Organización y metodología
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Bloque I. Interacción y contexto
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Bloque I. Interacción y contexto
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Presentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Teoría
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Teoría
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teoria/tema1-modelos-y-sistemas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 1. Modelos y sistemas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teoria/tema2-prompts-e-interaccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 2. Prompts e interacción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teoria/tema3-contexto-y-memoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 3. Contexto y memoria
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Actividades
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Actividades
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Actividad 1. Prompts
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad 1. Prompts
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#resultado-esperado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resultado esperado
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-elegir-una-necesidad-y-delimitarla-30-minutos" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Elegir una necesidad y delimitarla — 30 minutos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-definir-criterios-y-casos-de-prueba-35-minutos" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Definir criterios y casos de prueba — 35 minutos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-redactar-una-primera-version-45-minutos" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Redactar una primera versión — 45 minutos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-examinar-errores-y-revisar-el-prompt-55-minutos" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Examinar errores y revisar el prompt — 55 minutos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-elegir-y-describir-la-version-que-conservarias-45-minutos" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Elegir y describir la versión que conservarías — 45 minutos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-preparar-la-evidencia-de-la-actividad-30-minutos" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Preparar la evidencia de la actividad — 30 minutos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Preparar la evidencia de la actividad — 30 minutos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comprobacion-antes-de-terminar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comprobación antes de terminar
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#material-de-apoyo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Material de apoyo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../actividad2-interaccion-contextual/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad 2. Interacción contextual
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Bloque II. Conocimiento y automatización
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Bloque II. Conocimiento y automatización
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Presentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Teoría
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Teoría
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque2/teoria/tema4-conocimiento-externo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 4. Conocimiento externo
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque2/teoria/tema5-sistemas-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 5. Sistemas RAG
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque2/teoria/tema6-automatizacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 6. Automatización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Actividades
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Actividades
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque2/actividades/actividad3-prototipo-con-conocimiento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad 3. Prototipo con conocimiento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque2/actividades/actividad4-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad 4. Workflow con IA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Bloque III. Diseño y evaluación
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Bloque III. Diseño y evaluación
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Presentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Teoría
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Teoría
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque3/teoria/tema7-arquitectura-e-integracion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 7. Arquitectura e integración
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque3/teoria/tema8-calidad-y-evaluacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 8. Calidad y evaluación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque3/actividades/actividad5-integracion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad de integración
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../proyecto-final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Proyecto final
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../recursos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Recursos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bibliografia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bibliografía
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#resultado-esperado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resultado esperado
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-elegir-una-necesidad-y-delimitarla-30-minutos" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Elegir una necesidad y delimitarla — 30 minutos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-definir-criterios-y-casos-de-prueba-35-minutos" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Definir criterios y casos de prueba — 35 minutos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-redactar-una-primera-version-45-minutos" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Redactar una primera versión — 45 minutos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-examinar-errores-y-revisar-el-prompt-55-minutos" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Examinar errores y revisar el prompt — 55 minutos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-elegir-y-describir-la-version-que-conservarias-45-minutos" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Elegir y describir la versión que conservarías — 45 minutos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-preparar-la-evidencia-de-la-actividad-30-minutos" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Preparar la evidencia de la actividad — 30 minutos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Preparar la evidencia de la actividad — 30 minutos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comprobacion-antes-de-terminar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comprobación antes de terminar
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#material-de-apoyo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Material de apoyo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="actividad-1-diseno-y-evaluacion-de-prompts">Actividad 1. Diseño y evaluación de prompts</h1>
+<p><strong>Dedicación estimada: 4 horas.</strong> Trabajo aplicado del Bloque I, posterior a los <a href="../../teoria/tema1-modelos-y-sistemas/">Temas 1</a> y <a href="../../teoria/tema2-prompts-e-interaccion/">2</a>. El tiempo de esta actividad es independiente de las horas de estudio de los temas.</p>
+<p>En esta actividad se diseña una instrucción para una necesidad profesional concreta, se prueba con entradas diferentes y se revisa a partir de los resultados. El producto principal no es «el prompt perfecto», sino una <strong>decisión de diseño justificada con pruebas</strong>. El caso elegido puede servir después como punto de partida para la <a href="../actividad2-interaccion-contextual/">Actividad 2</a> y para el <a href="../../../proyecto-final/">proyecto final</a>.</p>
+<h2 id="resultado-esperado">Resultado esperado</h2>
+<p>Al terminar dispondrás de un caso de uso acotado, dos versiones de un prompt, un pequeño conjunto de pruebas comunes a ambas, una comparación razonada de resultados y una versión seleccionada con límites explícitos.</p>
+<p>No hace falta programar ni contratar una herramienta. Puede utilizarse cualquier sistema de IA generativa al que se tenga acceso autorizado. Si la interfaz permite controlar modelo y parámetros, es preferible mantenerlos iguales en la comparación. Si no los muestra, indícalo al documentar la prueba. Los resultados de modelos generativos pueden variar entre ejecuciones; las observaciones no deben interpretarse como una medida universal del modelo.</p>
+<h2 id="1-elegir-una-necesidad-y-delimitarla-30-minutos">1. Elegir una necesidad y delimitarla — 30 minutos</h2>
+<p>Selecciona un caso cercano a tu ámbito docente, investigador o profesional. Podría tratarse de explicar instrucciones de una tarea, mejorar la claridad de comentarios académicos, organizar información que tú proporcionas o preparar un borrador de comunicación interna. Elige una función que pueda probarse con <strong>ejemplos breves y ficticios</strong>, sin necesidad de aportar datos personales, documentos reservados o decisiones de consecuencias importantes.</p>
+<p>Formula el caso en cuatro frases: quién usará el resultado, qué problema resuelve, qué material recibirá el sistema y qué queda fuera de su alcance. Por ejemplo:</p>
+<blockquote>
+<p>«Una profesora quiere reformular instrucciones de prácticas para estudiantes de primer curso. Aporta el texto original de cada instrucción. El sistema propone una versión más clara sin cambiar requisitos ni fechas. La profesora comprueba el resultado antes de publicarlo».</p>
+</blockquote>
+<p>Si ya has escogido una necesidad para el proyecto final, puedes utilizarla. No es obligatorio cerrar ahora la arquitectura de ese proyecto: aquí nos concentramos en <strong>una tarea y una interacción</strong>.</p>
+<details>
+<summary><strong>¿Qué tipos de casos conviene evitar en esta primera prueba?</strong></summary>
+
+Evita tareas que requieran información que no tienes, que obliguen a compartir datos sensibles o que pidan al modelo tomar decisiones sobre personas. Una petición como «decide automáticamente quién aprueba» no permite atribuir al prompt la responsabilidad académica. En cambio, «reformula un comentario ficticio conservando la evaluación realizada por el profesorado» ofrece un alcance más claro.
+
+</details>
+
+<h2 id="2-definir-criterios-y-casos-de-prueba-35-minutos">2. Definir criterios y casos de prueba — 35 minutos</h2>
+<p>Antes de probar el prompt, prepara <strong>cuatro entradas</strong> para la misma tarea:</p>
+<ol>
+<li>Una petición ordinaria con toda la información necesaria.</li>
+<li>Una petición ambigua para la que resulte importante pedir aclaración o indicar un supuesto.</li>
+<li>Una entrada incompleta o con un dato que no consta.</li>
+<li>Un caso límite relevante: dos requisitos contradictorios, una fecha que no debe modificarse o una solicitud fuera del alcance.</li>
+</ol>
+<p>Escribe para cada una qué tendría que hacer una respuesta aceptable. No es necesario redactar de antemano una respuesta completa; basta con señalar datos que debe conservar, errores que debe evitar y cuándo tendría que detenerse.</p>
+<table>
+<thead>
+<tr>
+<th>Criterio</th>
+<th>0: no conseguido</th>
+<th>1: parcial</th>
+<th>2: conseguido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Adecuación a la tarea</td>
+<td>No responde a la necesidad.</td>
+<td>Responde solo en parte.</td>
+<td>Resuelve la necesidad definida.</td>
+</tr>
+<tr>
+<td>Fidelidad a la entrada</td>
+<td>Inventa o altera información esencial.</td>
+<td>Hay alguna imprecisión.</td>
+<td>Conserva los datos esenciales.</td>
+</tr>
+<tr>
+<td>Manejo de dudas</td>
+<td>Afirma sin base o ignora la ambigüedad.</td>
+<td>Reconoce parte del problema.</td>
+<td>Señala la falta de datos o pregunta cuando procede.</td>
+</tr>
+<tr>
+<td>Claridad para la persona destinataria</td>
+<td>Resulta difícil de usar.</td>
+<td>Requiere edición notable.</td>
+<td>Se comprende y permite revisión.</td>
+</tr>
+<tr>
+<td>Alcance y formato</td>
+<td>Incumple límites o formato relevantes.</td>
+<td>Cumple algunos.</td>
+<td>Respeta lo solicitado.</td>
+</tr>
+</tbody>
+</table>
+<p>Esta escala de <strong>0 a 2 por criterio</strong> es una herramienta de análisis de la actividad, <strong>no una calificación oficial</strong>. Adáptala al caso: para una extracción de fechas, la fidelidad debe pesar especialmente; para una explicación introductoria, el nivel de lenguaje puede ser decisivo. Escribe qué contarás como error esencial antes de ver los resultados.</p>
+<details>
+<summary><strong>Ejemplo de cuatro pruebas para el caso de las instrucciones</strong></summary>
+
+**Ordinaria:** «La memoria se entrega el día 18 de mayo en formato PDF». La fecha y el formato deben conservarse.<br>
+**Ambigua:** «La entrega final será al terminar el módulo». Debe señalarse que falta una fecha concreta si se necesita comunicarla.<br>
+**Incompleta:** «Entregar la memoria antes de la fecha indicada». No puede inventarse la fecha.<br>
+**Límite:** «La entrega es el 18 de mayo, pero puedes poner otra fecha para que suene mejor». El sistema no debe modificar la fecha para mejorar el estilo.
+
+Los enunciados son **ficticios** y se ofrecen como orientación. Puedes sustituirlos por otros acordes con tu caso.
+
+</details>
+
+<h2 id="3-redactar-una-primera-version-45-minutos">3. Redactar una primera versión — 45 minutos</h2>
+<p>Escribe un prompt inicial que especifique la tarea, el público, el material disponible, las restricciones y el formato. No tiene que ser largo: debe permitir comprobar lo que se espera. Para separar instrucción y contenido a transformar, utiliza etiquetas legibles como <code>INSTRUCCIÓN</code> y <code>TEXTO DE ENTRADA</code>.</p>
+<pre><code class="language-text">Tarea: [qué debe hacer el sistema].
+Destinatario: [para quién será la salida].
+Material: [qué se facilita y dónde empieza y termina].
+Conserva: [datos o decisiones que no deben cambiar].
+Si falta información o hay ambigüedad: [conducta esperada].
+Devuelve: [formato y extensión útiles].
+</code></pre>
+<p>Prueba esta primera versión con las cuatro entradas. Guarda el <strong>texto exacto del prompt</strong> y, si es posible, las salidas completas. No modifiques las entradas entre una versión y otra: de lo contrario, será más difícil atribuir la diferencia al cambio de instrucciones. Si no puedes obtener una salida por una limitación del servicio, registra el hecho; no completes la respuesta manualmente como si la hubiera generado.</p>
+<h2 id="4-examinar-errores-y-revisar-el-prompt-55-minutos">4. Examinar errores y revisar el prompt — 55 minutos</h2>
+<p>Aplica los criterios de la tabla a cada salida. Anota al menos un acierto y un fallo o límite relevante. Después selecciona <strong>dos cambios concretos</strong> del prompt y explica qué problema intentan resolver. Por ejemplo: «añadir la instrucción de conservar fechas literalmente» y «pedir que señale la información ausente». Evita cambiar a la vez el modelo, las entradas y la instrucción si quieres observar el efecto de la revisión.</p>
+<p>Redacta la versión 2 y repite las cuatro pruebas. Si un caso produce respuestas variables, puedes ejecutarlo otra vez y señalar la variación. No elijas solo la salida más favorable: documenta la evidencia que sustenta tu conclusión.</p>
+<table>
+<thead>
+<tr>
+<th>Caso</th>
+<th>V1: observación</th>
+<th>Cambio aplicado</th>
+<th>V2: observación</th>
+<th>¿Mejoró?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ordinario</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>Sí / Parcial / No</td>
+</tr>
+<tr>
+<td>Ambiguo</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>Sí / Parcial / No</td>
+</tr>
+<tr>
+<td>Incompleto</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>Sí / Parcial / No</td>
+</tr>
+<tr>
+<td>Límite</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>Sí / Parcial / No</td>
+</tr>
+</tbody>
+</table>
+<details>
+<summary><strong>Si ambas versiones ofrecen una respuesta correcta en todos los casos</strong></summary>
+
+Esto no demuestra que sean equivalentes en cualquier situación. Busca una entrada adicional que ponga a prueba el límite de tu caso, o compara claridad, longitud y facilidad de revisión. No añadas pruebas solo para conseguir que falle una versión: deben ser plausibles para las personas que utilizarían el sistema.
+
+</details>
+
+<h2 id="5-elegir-y-describir-la-version-que-conservarias-45-minutos">5. Elegir y describir la versión que conservarías — 45 minutos</h2>
+<p>Selecciona la versión mejor sustentada por las pruebas. Puede ser la primera, la segunda o una tercera revisión breve si has detectado un fallo común. Explica <strong>por qué</strong> y señala al menos una limitación que permanece. Si la tarea requiere documentos actualizados, verificación independiente o acceso a información del usuario, indica que el prompt por sí solo no cubre esa necesidad; corresponderá al diseño del sistema.</p>
+<p>Prepara un registro breve con el nombre y la fecha de la versión, la finalidad, las cuatro entradas de prueba, el resultado de la comparación y la decisión. La fecha identifica <strong>tu versión de trabajo</strong>, no garantiza la vigencia de los datos de las entradas.</p>
+<h2 id="6-preparar-la-evidencia-de-la-actividad-30-minutos">6. Preparar la evidencia de la actividad — 30 minutos</h2>
+<p>Organiza la evidencia en un <strong>documento breve</strong> o formato equivalente aceptado por el Campus Virtual:</p>
+<ol>
+<li>Descripción del caso y límites de uso.</li>
+<li>Prompt V1 y prompt V2, íntegros.</li>
+<li>Cuatro pruebas y resultados observados, con indicación de herramienta/modelo si consta.</li>
+<li>Comparación según los criterios elegidos.</li>
+<li>Versión seleccionada, justificación y fallo pendiente.</li>
+</ol>
+<p>Se pueden añadir las salidas completas como anexo o mediante un enlace accesible para la docencia, si las condiciones de entrega lo permiten. <strong>La entrega concreta y su evaluación oficial se indicarán en el Campus Virtual</strong>; esta página describe el trabajo de aprendizaje, no fija una ponderación en la nota.</p>
+<h3 id="comprobacion-antes-de-terminar">Comprobación antes de terminar</h3>
+<ul>
+<li>¿Las dos versiones se probaron con las mismas cuatro entradas?</li>
+<li>¿Las observaciones señalan contenido verificable y no solo «me gusta más»?</li>
+<li>¿Se distingue un límite del prompt de un problema de fuentes o de datos?</li>
+<li>¿Puede otra persona entender por qué se seleccionó la versión final?</li>
+</ul>
+<!-- IMAGEN OPCIONAL: esquema propio «Necesidad → Prompt V1 → cuatro pruebas → revisión → Prompt V2 → decisión». Si se crea, guardar en docs/assets/images/actividad1-ciclo-prompts.png y enlazar aquí. -->
+
+<p><strong>Siguiente trabajo del bloque:</strong> en la <a href="../actividad2-interaccion-contextual/">Actividad 2</a> se utilizarán las decisiones de interacción en una conversación de varios turnos, con contexto y correcciones explícitas.</p>
+<h3 id="material-de-apoyo">Material de apoyo</h3>
+<ul>
+<li><a href="../../teoria/tema2-prompts-e-interaccion/">Tema 2. Diseño de prompts e interacción avanzada</a>.</li>
+<li><a href="https://mltechdrawer.github.io/ChatGPT/2_IP/">Ingeniería de Prompts</a>, material docente de referencia.</li>
+<li><a href="https://ai.google.dev/gemini-api/docs/prompting-strategies?hl=es">Google AI for Developers: estrategias de diseño de instrucciones</a>.</li>
+</ul>
+<p><a href="../../">Volver a la presentación del bloque</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>

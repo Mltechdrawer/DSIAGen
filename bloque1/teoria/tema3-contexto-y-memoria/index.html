@@ -1,0 +1,1856 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Microcredencial universitaria de 3 ECTS">
+      
+      
+      
+      
+        <link rel="prev" href="../tema2-prompts-e-interaccion/">
+      
+      
+        <link rel="next" href="../../actividades/actividad1-prompts/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Tema 3. Contexto y memoria - Diseño de Sistemas de Inteligencia Artificial Generativa</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tema-3-contexto-memoria-y-conversaciones" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../.." title="Diseño de Sistemas de Inteligencia Artificial Generativa" class="md-header__button md-logo" aria-label="Diseño de Sistemas de Inteligencia Artificial Generativa" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Diseño de Sistemas de Inteligencia Artificial Generativa
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tema 3. Contexto y memoria
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Diseño de Sistemas de Inteligencia Artificial Generativa" class="md-nav__button md-logo" aria-label="Diseño de Sistemas de Inteligencia Artificial Generativa" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Diseño de Sistemas de Inteligencia Artificial Generativa
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    La microcredencial
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            La microcredencial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microcredencial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Presentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microcredencial/resultados-de-aprendizaje/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Resultados de aprendizaje
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microcredencial/organizacion-y-metodologia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Organización y metodología
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Bloque I. Interacción y contexto
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Bloque I. Interacción y contexto
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Presentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Teoría
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Teoría
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tema1-modelos-y-sistemas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 1. Modelos y sistemas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tema2-prompts-e-interaccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 2. Prompts e interacción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Tema 3. Contexto y memoria
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 3. Contexto y memoria
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-la-respuesta-depende-de-lo-que-el-sistema-conoce-ahora" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. La respuesta depende de lo que el sistema conoce ahora
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-que-informacion-puede-formar-parte-del-contexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Qué información puede formar parte del contexto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Qué información puede formar parte del contexto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#la-ventana-de-contexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      La ventana de contexto
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-conversacion-estado-y-memoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Conversación, estado y memoria
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Conversación, estado y memoria">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memoria-de-la-tarea-y-memoria-de-la-persona" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memoria de la tarea y memoria de la persona
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correcciones-y-cambios-de-decision" class="md-nav__link">
+    <span class="md-ellipsis">
+      Correcciones y cambios de decisión
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-seleccionar-actualizar-y-condensar-informacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Seleccionar, actualizar y condensar información
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Seleccionar, actualizar y condensar información">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-conservar-en-un-resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Qué conservar en un resumen
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#procedencia-vigencia-y-relevancia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Procedencia, vigencia y relevancia
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-dos-ejemplos-desarrollados" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Dos ejemplos desarrollados
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-sintesis-y-comprobacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Síntesis y comprobación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Síntesis y comprobación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lecturas-para-ampliar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecturas para ampliar
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Actividades
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Actividades
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../actividades/actividad1-prompts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad 1. Prompts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../actividades/actividad2-interaccion-contextual/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad 2. Interacción contextual
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Bloque II. Conocimiento y automatización
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Bloque II. Conocimiento y automatización
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Presentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Teoría
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Teoría
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque2/teoria/tema4-conocimiento-externo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 4. Conocimiento externo
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque2/teoria/tema5-sistemas-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 5. Sistemas RAG
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque2/teoria/tema6-automatizacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 6. Automatización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Actividades
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Actividades
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque2/actividades/actividad3-prototipo-con-conocimiento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad 3. Prototipo con conocimiento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque2/actividades/actividad4-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad 4. Workflow con IA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Bloque III. Diseño y evaluación
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Bloque III. Diseño y evaluación
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Presentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Teoría
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Teoría
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque3/teoria/tema7-arquitectura-e-integracion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 7. Arquitectura e integración
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque3/teoria/tema8-calidad-y-evaluacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 8. Calidad y evaluación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque3/actividades/actividad5-integracion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad de integración
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../proyecto-final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Proyecto final
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../recursos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Recursos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bibliografia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bibliografía
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-la-respuesta-depende-de-lo-que-el-sistema-conoce-ahora" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. La respuesta depende de lo que el sistema conoce ahora
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-que-informacion-puede-formar-parte-del-contexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Qué información puede formar parte del contexto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Qué información puede formar parte del contexto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#la-ventana-de-contexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      La ventana de contexto
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-conversacion-estado-y-memoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Conversación, estado y memoria
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Conversación, estado y memoria">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memoria-de-la-tarea-y-memoria-de-la-persona" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memoria de la tarea y memoria de la persona
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correcciones-y-cambios-de-decision" class="md-nav__link">
+    <span class="md-ellipsis">
+      Correcciones y cambios de decisión
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-seleccionar-actualizar-y-condensar-informacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Seleccionar, actualizar y condensar información
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Seleccionar, actualizar y condensar información">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-conservar-en-un-resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Qué conservar en un resumen
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#procedencia-vigencia-y-relevancia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Procedencia, vigencia y relevancia
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-dos-ejemplos-desarrollados" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Dos ejemplos desarrollados
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-sintesis-y-comprobacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Síntesis y comprobación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Síntesis y comprobación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lecturas-para-ampliar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecturas para ampliar
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="tema-3-contexto-memoria-y-conversaciones">Tema 3. Contexto, memoria y conversaciones</h1>
+<p><strong>Dedicación estimada: 4 horas.</strong> Comprende lectura guiada, análisis de dos casos y preguntas de comprobación. La <a href="../../actividades/actividad2-interaccion-contextual/">Actividad 2. Construcción de una interacción contextual</a> tiene otras cuatro horas y se desarrollará posteriormente.</p>
+<table>
+<thead>
+<tr>
+<th>Recorrido</th>
+<th style="text-align: right;">Tiempo orientativo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. La respuesta depende de lo que el sistema conoce ahora</td>
+<td style="text-align: right;">25 min</td>
+</tr>
+<tr>
+<td>2. Qué información puede formar parte del contexto</td>
+<td style="text-align: right;">40 min</td>
+</tr>
+<tr>
+<td>3. Conversación, estado y memoria</td>
+<td style="text-align: right;">45 min</td>
+</tr>
+<tr>
+<td>4. Seleccionar, actualizar y condensar información</td>
+<td style="text-align: right;">45 min</td>
+</tr>
+<tr>
+<td>5. Dos ejemplos desarrollados</td>
+<td style="text-align: right;">60 min</td>
+</tr>
+<tr>
+<td>6. Síntesis y comprobación</td>
+<td style="text-align: right;">25 min</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>240 min</strong></td>
+</tr>
+</tbody>
+</table>
+<p>En el <a href="../tema2-prompts-e-interaccion/">Tema 2</a> aprendimos a formular la tarea y decidir cuándo pedir una aclaración. Sin embargo, un buen prompt puede fallar si faltan datos esenciales, se utiliza un documento antiguo o se pierde una decisión tomada cinco mensajes antes. Diseñar una conversación útil exige determinar <strong>qué información debe estar disponible en cada turno, de dónde procede y cuánto tiempo conserva su validez</strong>.</p>
+<p><strong>Al finalizar podrás</strong> distinguir contexto, historial, estado y memoria; explicar las limitaciones de una ventana de contexto; comparar estrategias para mantener la continuidad de una conversación; y reconocer cuándo debe verificarse o descartarse información previa.</p>
+<h2 id="1-la-respuesta-depende-de-lo-que-el-sistema-conoce-ahora">1. La respuesta depende de lo que el sistema conoce ahora</h2>
+<p>Imaginemos un asistente para preparar el programa de una asignatura. La docente le indica al principio: «El grupo está formado por estudiantes de segundo curso y la asignatura dura seis semanas». Unos mensajes después pide: «Propón el plan de la semana 4». Si la aplicación incluye aquella información en la nueva petición, el modelo puede ajustar el plan. Si no la incluye, quizá produzca un programa genérico o haga una suposición errónea.</p>
+<p>El hecho de que la conversación se vea completa en pantalla <strong>no demuestra por sí solo</strong> que el modelo reciba todos los mensajes cada vez que responde. La aplicación decide cómo gestionar los turnos y qué material enviar o recuperar. Algunas plataformas mantienen estado de conversación; otras requieren que la aplicación aporte el historial, seleccione fragmentos o transmita una referencia a un estado gestionado por el servicio. El comportamiento exacto depende de la implementación.</p>
+<details>
+<summary><strong>Pregunta inicial: ¿qué necesita saber realmente para planificar la semana 4?</strong></summary>
+
+Necesita el nivel del grupo, la duración total, el objetivo de aprendizaje, los contenidos ya tratados y las decisiones vigentes que afecten a esa semana. Probablemente no necesita conservar cada saludo ni todas las versiones descartadas de un ejemplo. Seleccionar el contexto consiste en decidir qué información influye materialmente en la respuesta.
+
+</details>
+
+<p>La <a href="https://mltechdrawer.github.io/ChatGPT/3_IC/">Ingeniería de Contexto</a> introduce esta idea. Aquí avanzamos desde la definición hacia decisiones concretas sobre conversaciones y memoria de un sistema.</p>
+<h2 id="2-que-informacion-puede-formar-parte-del-contexto">2. Qué información puede formar parte del contexto</h2>
+<p>En términos prácticos, llamaremos <strong>contexto de una petición</strong> a la información disponible para que el modelo responda a esa petición. Puede contener instrucciones de la aplicación, la pregunta actual, partes de la conversación, documentos seleccionados y resultados de herramientas. Su composición puede variar entre turnos.</p>
+<p>El contexto que recibe el modelo puede estar formado por <strong>distintos tipos de información</strong>, cada uno con una función y una vigencia diferentes. La siguiente tabla muestra algunos de los elementos que pueden formar parte de ese contexto y plantea, para cada uno, una pregunta de diseño que ayuda a decidir si debe incorporarse en un turno concreto.</p>
+<table>
+<thead>
+<tr>
+<th>Elemento</th>
+<th>Ejemplo</th>
+<th>Pregunta de diseño</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Instrucciones generales</td>
+<td>«Explica requisitos usando solo fuentes autorizadas».</td>
+<td>¿Siguen vigentes para esta tarea?</td>
+</tr>
+<tr>
+<td>Solicitud actual</td>
+<td>«¿Qué debo entregar esta semana?».</td>
+<td>¿Es suficientemente precisa?</td>
+</tr>
+<tr>
+<td>Historial seleccionado</td>
+<td>«Nos referimos al proyecto grupal».</td>
+<td>¿Qué mensajes previos son relevantes?</td>
+</tr>
+<tr>
+<td>Estado estructurado</td>
+<td><code>tipo_trabajo: grupal</code>; <code>semana: 4</code>.</td>
+<td>¿Quién lo actualiza si cambia el plan?</td>
+</tr>
+<tr>
+<td>Datos de usuario autorizados</td>
+<td>Preferencia de idioma o nivel de detalle.</td>
+<td>¿Es necesario conservarlos?</td>
+</tr>
+<tr>
+<td>Fuentes externas</td>
+<td>Guía docente del curso actual.</td>
+<td>¿Es la versión correcta y está disponible?</td>
+</tr>
+<tr>
+<td>Resultado de una herramienta</td>
+<td>Calendario o consulta a una base de datos.</td>
+<td>¿Cuándo se obtuvo y puede haber cambiado?</td>
+</tr>
+</tbody>
+</table>
+<p>Estos elementos no tienen que estar presentes en todas las interacciones. <strong>Diseñar el contexto consiste también en seleccionar qué información necesita realmente el modelo en cada momento</strong>, comprobar que sigue siendo válida y evitar conservar o incorporar datos que no aportan valor a la tarea. Por ello, el contexto puede cambiar de un turno a otro aunque el sistema y sus instrucciones generales permanezcan iguales.</p>
+<p>Como indicamos anteriormente la tabla no significa que haya que incluirlo todo en cada llamada al modelo. La selección depende de la pregunta. Para aclarar un término bastaría una definición breve y el nivel del alumnado; para indicar la fecha oficial de entrega haría falta la fuente adecuada.</p>
+<h3 id="la-ventana-de-contexto">La ventana de contexto</h3>
+<p>Cada modelo admite una cantidad máxima de información por petición, normalmente expresada en tokens. La llamada puede incluir entrada y espacio para generar la salida; la contabilización exacta depende de la plataforma y del modelo. La <strong>ventana de contexto</strong> no es una memoria permanente: es un límite de lo que el modelo puede procesar en una interacción. Si una conversación excede ese límite, la aplicación debe decidir cómo gestionar lo anterior, y algunas plataformas pueden truncar o condensar el historial según su configuración.</p>
+<p>Una ventana amplia permite aportar documentos extensos, pero no garantiza que toda la información sea necesaria ni que el modelo identifique siempre el fragmento correcto. Incluir diez versiones de la misma guía puede hacer más difícil saber cuál es la vigente. La pregunta útil no es solo «¿cabe?», sino «¿qué aporta y cómo sabemos que es la versión correcta?».</p>
+<details>
+<summary><strong>¿El conocimiento adquirido durante el entrenamiento es contexto?</strong></summary>
+
+En este tema reservamos «contexto» para la información disponible en la petición o incorporada mediante mecanismos de la aplicación. Los parámetros aprendidos por un modelo durante su entrenamiento son algo distinto. Pueden ayudarle a redactar y relacionar conceptos, pero no sustituyen la aportación y verificación de información específica o actual.
+
+</details>
+
+<details>
+<summary><strong>¿Adjuntar un archivo equivale a que el modelo consulte cada línea?</strong></summary>
+
+No necesariamente. La plataforma puede proporcionar el archivo íntegro, extraer su texto, seleccionar fragmentos o aplicar otro tratamiento. Incluso si todo cabe en la ventana, hay que comprobar que la respuesta se apoye en el pasaje pertinente. Conviene distinguir el documento disponible en el sistema del fragmento que llega efectivamente al modelo para responder.
+
+</details>
+
+<details>
+<summary><strong>💡 Metáfora · Lo que sabes y lo que tienes sobre la mesa</strong></summary>
+
+<div style="background-color: #FFF9EC; padding: 12px 16px;">
+
+<p>Imagina a una persona preparando un informe. Por una parte, posee conocimientos adquiridos durante años de estudio y experiencia. Esto se parece al <strong>conocimiento adquirido durante el entrenamiento</strong>: patrones, relaciones y regularidades aprendidos por el modelo durante su entrenamiento y reflejados en sus parámetros.</p>
+
+<p>Por otra parte, para preparar ese informe la persona coloca sobre su mesa instrucciones, notas y documentos concretos. Esa información disponible para realizar la tarea actual representa el <strong>contexto</strong>: aquello que se proporciona al modelo en una interacción para ayudarle a generar la respuesta.</p>
+
+<p>Pero tener un documento sobre la mesa tampoco significa haber utilizado todas sus páginas. Puede consultarse solo el capítulo necesario o determinados fragmentos. Del mismo modo, que un archivo esté disponible en una aplicación no implica necesariamente que <strong>todo su contenido forme parte del contexto que recibe el modelo</strong>.</p>
+
+</div>
+
+</details>
+
+<p><img alt="Información disponible en una petición del modelo" src="../../../assets/images/tema3-ventana-contexto.png" style="display:block; margin:auto;" width="550" /></p>
+<p><small><strong>Imagen.</strong> <em>Relación entre el conocimiento adquirido durante el entrenamiento, la ventana de contexto y la información disponible fuera de ella.</em></small></p>
+<h2 id="3-conversacion-estado-y-memoria">3. Conversación, estado y memoria</h2>
+<p>Una conversación se compone de turnos, pero no todas las decisiones relevantes deben deducirse una y otra vez de un historial de texto. Conviene separar tres cosas:</p>
+<ol>
+<li><strong>Historial conversacional:</strong> mensajes intercambiados, potencialmente útiles para interpretar referencias como «hazlo más breve».</li>
+<li><strong>Estado de la tarea:</strong> hechos y decisiones vigentes que la aplicación necesita para continuar, por ejemplo «documento elegido: guía 2026–2027» o «formato aprobado: tabla».</li>
+<li><strong>Memoria entre sesiones:</strong> datos que el sistema decide conservar para usos posteriores, como una preferencia de idioma autorizada. Su persistencia y alcance deben definirse expresamente.</li>
+</ol>
+<p>Un sistema puede conservar el historial completo en un almacenamiento y, sin embargo, enviar al modelo solo los últimos turnos más un estado resumido. Otro puede no guardar nada entre sesiones. <strong>Almacenado</strong> no significa <strong>visible en el contexto actual</strong>, y <strong>visible ahora</strong> no significa <strong>guardado para el futuro</strong>.</p>
+<p>Decidir qué información debe conservarse entre interacciones es también una <strong>decisión de diseño</strong>. No todo lo utilizado durante una conversación necesita persistir: algunos datos pueden ser útiles en futuras interacciones, mientras que otros solo tienen sentido para resolver la tarea actual. La siguiente tabla muestra esta diferencia en varias situaciones.</p>
+<table>
+<thead>
+<tr>
+<th>Situación</th>
+<th>Información que podría persistir</th>
+<th>Información que quizá no hace falta conservar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Redacción de una guía</td>
+<td>Público, estructura aprobada y secciones pendientes.</td>
+<td>Versiones de frases ya descartadas.</td>
+</tr>
+<tr>
+<td>Consulta de una norma</td>
+<td>Identificador y fecha de la fuente vigente.</td>
+<td>Conversaciones ajenas a la pregunta actual.</td>
+</tr>
+<tr>
+<td>Apoyo a una clase</td>
+<td>Nivel del grupo y formato preferido, si procede.</td>
+<td>Datos personales innecesarios del alumnado.</td>
+</tr>
+</tbody>
+</table>
+<p>La persistencia debe responder, por tanto, a una <strong>necesidad concreta</strong> y no a la idea de conservar toda la interacción. Diseñar qué se guarda implica decidir qué información seguirá siendo útil, durante cuánto tiempo y con qué finalidad. Además, que un dato se conserve no significa que deba incorporarse automáticamente al contexto de las siguientes interacciones.</p>
+<h3 id="memoria-de-la-tarea-y-memoria-de-la-persona">Memoria de la tarea y memoria de la persona</h3>
+<p>Una decisión del proyecto, como «el informe se presentará en español», no equivale a una característica permanente de la persona usuaria. Conservar ambas como una única «preferencia» puede producir errores en proyectos futuros. Hay que indicar <strong>a qué tarea pertenece cada dato</strong>, quién puede modificarlo, cuándo caduca y en qué situaciones no debe reutilizarse.</p>
+<details>
+<summary><strong>¿Una memoria persistente significa que el modelo aprendió algo nuevo?</strong></summary>
+
+Habitualmente, la aplicación almacena el dato fuera del modelo y puede volver a incluirlo en peticiones posteriores. Esto es distinto de modificar los parámetros del modelo mediante entrenamiento. La palabra «memoria» se utiliza de distintas maneras en distintos productos; para diseñar conviene describir el mecanismo concreto: almacenamiento, recuperación y uso del dato.
+
+</details>
+
+<h3 id="correcciones-y-cambios-de-decision">Correcciones y cambios de decisión</h3>
+<p>Supongamos que se decide primero una sesión de 90 minutos y después se corrige a 60. El sistema no debe repetir ambas duraciones como igualmente válidas. Tiene que actualizar el estado o resolver explícitamente el conflicto. Una forma legible de representarlo sería «Duración vigente: 60 min; decisión anterior: 90 min, sustituida». Las correcciones deberían tener prioridad sobre las versiones antiguas y, cuando importan las fechas, conviene conservar su procedencia.</p>
+<p>El mismo criterio se aplica a preferencias y datos guardados: debe existir un modo de corregirlos y, cuando corresponda, eliminarlos. En contextos académicos o profesionales, la selección de datos conservados debe ajustarse a la finalidad del servicio y a las normas aplicables. En este tema nos centramos en la decisión de diseño; las reglas de protección de datos se estudiarán en los materiales específicos que correspondan.</p>
+<h2 id="4-seleccionar-actualizar-y-condensar-informacion">4. Seleccionar, actualizar y condensar información</h2>
+<p>Cuando una interacción se prolonga, es necesario decidir <strong>qué información mantener disponible y de qué forma hacerlo</strong>. No existe una estrategia universal para gestionar conversaciones largas: conservar los últimos turnos, mantener un estado estructurado, resumir el historial o recuperar información externa responde a necesidades diferentes. La siguiente tabla compara estas estrategias y algunas de sus principales limitaciones.</p>
+<table>
+<thead>
+<tr>
+<th>Estrategia</th>
+<th>Cuándo ayuda</th>
+<th>Limitación que debe vigilarse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Últimos turnos</td>
+<td>Ajustes inmediatos como «hazlo más breve».</td>
+<td>Pierde decisiones importantes más antiguas.</td>
+</tr>
+<tr>
+<td>Historial completo, si cabe</td>
+<td>Revisar cómo se llegó a una decisión.</td>
+<td>Aumenta volumen y puede incluir contradicciones.</td>
+</tr>
+<tr>
+<td>Estado estructurado</td>
+<td>Mantener hechos y decisiones identificables.</td>
+<td>Debe actualizarse cuando cambian.</td>
+</tr>
+<tr>
+<td>Resumen de conversación</td>
+<td>Continuar un trabajo extenso.</td>
+<td>Puede omitir matices o convertir una hipótesis en un hecho.</td>
+</tr>
+<tr>
+<td>Recuperación de documentos</td>
+<td>Aportar fuentes externas pertinentes.</td>
+<td>Depende de seleccionar versión y fragmento correctos.</td>
+</tr>
+</tbody>
+</table>
+<p>La elección no tiene por qué reducirse a una única estrategia. Un sistema puede, por ejemplo, conservar los últimos turnos para mantener la continuidad inmediata y, al mismo tiempo, utilizar un estado estructurado para preservar decisiones importantes. Lo relevante es <strong>seleccionar, actualizar y condensar la información sin perder aquello que resulta necesario para la tarea</strong>.</p>
+<p>La recuperación de documentos tendrá su desarrollo propio en el Bloque II. Aquí interesa entender que es una forma de <strong>aportar contexto externo</strong>, no de convertir una conversación en una memoria perfecta.</p>
+<h3 id="que-conservar-en-un-resumen">Qué conservar en un resumen</h3>
+<p>Una síntesis útil debería separar al menos <strong>hechos confirmados</strong>, <strong>decisiones vigentes</strong>, <strong>dudas abiertas</strong>, <strong>fuentes</strong> y <strong>siguiente paso</strong>. Si un dato proviene de una guía, registrar versión y apartado ayuda a revisarlo después. Si la profesora expresó una preferencia solo para una actividad, no hay que transformarla en regla para todo el curso.</p>
+<p>Un resumen puede ahorrar espacio, pero es una transformación con pérdida de información: se decide qué omitir. Por eso conviene conservar un enlace al original cuando sea necesario, comprobar los puntos críticos y ofrecer la posibilidad de corregir la síntesis. Una frase como «el proyecto debe durar cuatro semanas» podría ser incorrecta si en la conversación se dijo «quizá cuatro semanas, aún por confirmar».</p>
+<details>
+<summary><strong>Ejemplo · Cuando resumir una conversación cambia una decisión</strong></summary>
+
+En una conversación larga, la aplicación puede decidir no mantener todo el historial en el contexto. Para reducirlo, puede <strong>utilizar un modelo para generar un resumen de los mensajes anteriores</strong>, conservar ese resumen y proporcionarlo como contexto en interacciones posteriores.
+
+<br><br>
+
+<strong>Conversación original:</strong><br>
+«Podríamos trabajar con grupos de tres, pero confirmaré el número cuando conozca la matrícula».
+
+<br><br>
+
+A partir de la conversación, el modelo genera este resumen:<br>
+«Los grupos serán de tres estudiantes».
+
+<br><br>
+
+El resumen es incorrecto porque <strong>transforma una posibilidad pendiente de confirmación en una decisión definitiva</strong>. Si la aplicación conserva este resumen y lo utiliza posteriormente como contexto, el modelo que genere una nueva respuesta podría no recibir la conversación original. Solo sabrá que «los grupos serán de tres estudiantes» porque esa es la información que se le ha proporcionado.
+
+<br><br>
+
+Un <strong>resumen fiel</strong> conservaría también la incertidumbre de la conversación original:<br>
+«Se propone trabajar con grupos de tres estudiantes, pendiente de confirmación cuando se conozca la matrícula».
+
+<br><br>
+
+Este ejemplo muestra por qué <strong>condensar el contexto no consiste únicamente en hacerlo más breve</strong>: el resumen debe conservar los hechos, las decisiones y también aquello que todavía está pendiente o es incierto.
+
+</details>
+
+<details>
+<summary><strong>¿Qué puede hacer la persona usuaria?</strong></summary>
+
+La persona usuaria no siempre controla cómo una aplicación selecciona o resume el historial, pero puede reducir el riesgo de pérdida o distorsión de información. Conviene <strong>hacer explícitas las decisiones importantes, señalar claramente qué información es provisional y corregir cualquier interpretación errónea cuando aparezca</strong>. En conversaciones largas también puede ser útil pedir al sistema que indique qué decisiones, restricciones y asuntos pendientes está teniendo en cuenta antes de continuar.
+
+</details>
+
+<h3 id="procedencia-vigencia-y-relevancia">Procedencia, vigencia y relevancia</h3>
+<p>Tres preguntas ayudan a decidir qué entra en el contexto:</p>
+<ul>
+<li><strong>Procedencia:</strong> ¿lo dijo la persona responsable, figura en un documento vigente o lo infirió el modelo?</li>
+<li><strong>Vigencia:</strong> ¿sigue siendo cierto para esta sesión, este proyecto y este curso?</li>
+<li><strong>Relevancia:</strong> ¿puede cambiar materialmente la respuesta actual?</li>
+</ul>
+<p>Un dato puede ser correcto y, aun así, resultar perjudicial si pertenece a otro proyecto. También puede ser pertinente pero no estar confirmado. Para información sensible o compartida, hay que verificar además quién está autorizado a acceder a ella. El diseño del contexto incluye una política de <strong>inclusión y exclusión</strong>, no solo la acumulación de datos.</p>
+<p><img alt="Ciclo de selección y actualización del contexto" src="../../../assets/images/tema3-ciclo-contexto.png" style="display:block; margin:auto;" width="400" /></p>
+<p><small><strong>Imagen.</strong> <em>Gestión del contexto mediante la selección, actualización y condensación de la información relevante.</em></small></p>
+<h2 id="5-dos-ejemplos-desarrollados">5. Dos ejemplos desarrollados</h2>
+<p>Los ejemplos permiten seguir las decisiones de contexto a través de varios turnos. Son <strong>escenarios ficticios</strong>; las posibles respuestas están redactadas para ilustrar el análisis, no son pruebas de rendimiento de un modelo comercial.</p>
+<ol>
+<li><a href="../ejemplos/tema3-ejemplo1-planificacion-sesion/">Ejemplo 1. Planificar una sesión en varios turnos</a>. Muestra cómo conservar y corregir decisiones sobre público, tiempo y objetivo.</li>
+<li><a href="../ejemplos/tema3-ejemplo2-instrucciones-vigentes/">Ejemplo 2. Responder con unas instrucciones que cambian de versión</a>. Muestra por qué historial, memoria y documento autorizado no son equivalentes.</li>
+</ol>
+<p>Para cada caso, identifica qué información proviene de la petición actual, cuál del estado de la tarea, cuál de una fuente externa y qué dato debe dejar de utilizarse tras una corrección.</p>
+<h2 id="6-sintesis-y-comprobacion">6. Síntesis y comprobación</h2>
+<p>La continuidad conversacional no consiste en conservar indiscriminadamente mensajes. Consiste en aportar a cada petición la información <strong>necesaria, autorizada, vigente y distinguible por procedencia</strong>. Una memoria persistente requiere decidir qué se guarda, cuándo se recupera y cómo se corrige. Los resúmenes y la recuperación ayudan a administrar conversaciones extensas, siempre que se comprueben sus pérdidas y posibles conflictos.</p>
+<ol>
+<li>Si la conversación está guardada íntegra en una base de datos, ¿puede el modelo conocer todos sus mensajes sin que se le proporcionen?</li>
+<li>¿Qué diferencia una preferencia válida solo para un proyecto de una preferencia que la persona desea mantener entre proyectos?</li>
+<li>¿Qué error aparece si el resumen convierte «posible fecha» en «fecha definitiva»?</li>
+<li>Cuando una guía nueva contradice una respuesta dada hace dos semanas, ¿qué fuente debe revisarse antes de contestar?</li>
+<li>¿Por qué una ventana de contexto amplia no sustituye la selección de documentos pertinentes?</li>
+</ol>
+<details>
+<summary><strong>Orientaciones para contrastar las respuestas</strong></summary>
+
+<p>1. No: almacenar el historial y hacerlo disponible en una petición son decisiones distintas.</p>
+<p>2. Su alcance y su persistencia. No debe reutilizarse automáticamente en otro proyecto una decisión local.</p>
+<p>3. Se pierde el grado de certeza y el sistema puede comunicar como oficial algo pendiente de confirmar.</p>
+<p>4. La guía vigente y su versión autorizada; la respuesta anterior puede servir para detectar el conflicto, no para decidir la nueva fecha.</p>
+<p>5. Porque caber en la ventana no hace que todos los fragmentos sean relevantes, actuales ni fáciles de distinguir.</p>
+
+</details>
+
+<p><strong>Para continuar:</strong> la <a href="../../actividades/actividad2-interaccion-contextual/">Actividad 2</a> permitirá diseñar una interacción que seleccione y actualice información de forma razonada. Los sistemas que incorporan documentos externos se estudiarán en el <a href="../../../bloque2/">Bloque II</a>.</p>
+<h3 id="lecturas-para-ampliar">Lecturas para ampliar</h3>
+<ul>
+<li><a href="https://mltechdrawer.github.io/ChatGPT/3_IC/">Ingeniería de Contexto</a>. Introducción docente a relevancia, claridad, actualización y economía del contexto.</li>
+<li><a href="https://developers.openai.com/api/docs/guides/conversation-state">OpenAI: gestión del estado de una conversación</a>. Ejemplos técnicos de historial, estado y límites de contexto.</li>
+<li><a href="https://developers.openai.com/api/docs/guides/compaction">OpenAI: compactación del contexto</a>. Ejemplo de cómo una plataforma administra conversaciones extensas.</li>
+<li><a href="https://ai.google.dev/gemini-api/docs/long-context">Google AI for Developers: contexto largo</a>. Capacidades y consideraciones de diseño en peticiones con gran cantidad de material.</li>
+</ul>
+<p><a href="../../">Volver a la presentación del bloque</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>

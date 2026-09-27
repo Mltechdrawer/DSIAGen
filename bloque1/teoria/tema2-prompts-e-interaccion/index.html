@@ -1,0 +1,1877 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Microcredencial universitaria de 3 ECTS">
+      
+      
+      
+      
+        <link rel="prev" href="../tema1-modelos-y-sistemas/">
+      
+      
+        <link rel="next" href="../tema3-contexto-y-memoria/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Tema 2. Prompts e interacción - Diseño de Sistemas de Inteligencia Artificial Generativa</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tema-2-diseno-de-prompts-e-interaccion-avanzada" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../.." title="Diseño de Sistemas de Inteligencia Artificial Generativa" class="md-header__button md-logo" aria-label="Diseño de Sistemas de Inteligencia Artificial Generativa" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Diseño de Sistemas de Inteligencia Artificial Generativa
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tema 2. Prompts e interacción
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Diseño de Sistemas de Inteligencia Artificial Generativa" class="md-nav__button md-logo" aria-label="Diseño de Sistemas de Inteligencia Artificial Generativa" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Diseño de Sistemas de Inteligencia Artificial Generativa
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    La microcredencial
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            La microcredencial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microcredencial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Presentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microcredencial/resultados-de-aprendizaje/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Resultados de aprendizaje
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microcredencial/organizacion-y-metodologia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Organización y metodología
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Bloque I. Interacción y contexto
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Bloque I. Interacción y contexto
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Presentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Teoría
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Teoría
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tema1-modelos-y-sistemas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 1. Modelos y sistemas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Tema 2. Prompts e interacción
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 2. Prompts e interacción
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-del-resultado-deseado-a-una-instruccion-util" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Del resultado deseado a una instrucción útil
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-componentes-de-un-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Componentes de un prompt
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Componentes de un prompt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#una-plantilla-legible" class="md-nav__link">
+    <span class="md-ellipsis">
+      Una plantilla legible
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-estrategias-de-diseno" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Estrategias de diseño
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Estrategias de diseño">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-delimitar-la-tarea-y-el-criterio-de-exito" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Delimitar la tarea y el criterio de éxito
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-aportar-el-material-necesario-y-distinguirlo-de-las-instrucciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Aportar el material necesario y distinguirlo de las instrucciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-mostrar-uno-o-varios-ejemplos-cuando-el-patron-resulte-dificil-de-explicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3. Mostrar uno o varios ejemplos cuando el patrón resulte difícil de explicar
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-definir-la-forma-de-la-respuesta-sin-confundir-forma-y-verdad" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4. Definir la forma de la respuesta sin confundir forma y verdad
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-preparar-la-respuesta-cuando-no-hay-base-suficiente" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5. Preparar la respuesta cuando no hay base suficiente
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-diseno-de-la-interaccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Diseño de la interacción
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Diseño de la interacción">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#una-regla-sencilla-para-aclarar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Una regla sencilla para aclarar
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iterar-con-un-proposito" class="md-nav__link">
+    <span class="md-ellipsis">
+      Iterar con un propósito
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ejemplos-desarrollados-y-evaluacion-inicial" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Ejemplos desarrollados y evaluación inicial
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-sintesis-y-comprobacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Síntesis y comprobación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Síntesis y comprobación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lecturas-de-referencia-y-ampliacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecturas de referencia y ampliación
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tema3-contexto-y-memoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 3. Contexto y memoria
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Actividades
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Actividades
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../actividades/actividad1-prompts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad 1. Prompts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../actividades/actividad2-interaccion-contextual/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad 2. Interacción contextual
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Bloque II. Conocimiento y automatización
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Bloque II. Conocimiento y automatización
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Presentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Teoría
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Teoría
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque2/teoria/tema4-conocimiento-externo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 4. Conocimiento externo
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque2/teoria/tema5-sistemas-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 5. Sistemas RAG
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque2/teoria/tema6-automatizacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 6. Automatización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Actividades
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Actividades
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque2/actividades/actividad3-prototipo-con-conocimiento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad 3. Prototipo con conocimiento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque2/actividades/actividad4-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad 4. Workflow con IA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Bloque III. Diseño y evaluación
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Bloque III. Diseño y evaluación
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Presentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Teoría
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Teoría
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque3/teoria/tema7-arquitectura-e-integracion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 7. Arquitectura e integración
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque3/teoria/tema8-calidad-y-evaluacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 8. Calidad y evaluación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque3/actividades/actividad5-integracion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad de integración
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../proyecto-final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Proyecto final
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../recursos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Recursos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bibliografia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bibliografía
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-del-resultado-deseado-a-una-instruccion-util" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Del resultado deseado a una instrucción útil
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-componentes-de-un-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Componentes de un prompt
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Componentes de un prompt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#una-plantilla-legible" class="md-nav__link">
+    <span class="md-ellipsis">
+      Una plantilla legible
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-estrategias-de-diseno" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Estrategias de diseño
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Estrategias de diseño">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-delimitar-la-tarea-y-el-criterio-de-exito" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Delimitar la tarea y el criterio de éxito
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-aportar-el-material-necesario-y-distinguirlo-de-las-instrucciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Aportar el material necesario y distinguirlo de las instrucciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-mostrar-uno-o-varios-ejemplos-cuando-el-patron-resulte-dificil-de-explicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3. Mostrar uno o varios ejemplos cuando el patrón resulte difícil de explicar
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-definir-la-forma-de-la-respuesta-sin-confundir-forma-y-verdad" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4. Definir la forma de la respuesta sin confundir forma y verdad
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-preparar-la-respuesta-cuando-no-hay-base-suficiente" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5. Preparar la respuesta cuando no hay base suficiente
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-diseno-de-la-interaccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Diseño de la interacción
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Diseño de la interacción">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#una-regla-sencilla-para-aclarar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Una regla sencilla para aclarar
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iterar-con-un-proposito" class="md-nav__link">
+    <span class="md-ellipsis">
+      Iterar con un propósito
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ejemplos-desarrollados-y-evaluacion-inicial" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Ejemplos desarrollados y evaluación inicial
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-sintesis-y-comprobacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Síntesis y comprobación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Síntesis y comprobación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lecturas-de-referencia-y-ampliacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecturas de referencia y ampliación
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="tema-2-diseno-de-prompts-e-interaccion-avanzada">Tema 2. Diseño de prompts e interacción avanzada</h1>
+<p><strong>Dedicación estimada: 3 horas.</strong> Incluye la lectura, el análisis de dos ejemplos y pequeñas comprobaciones de comprensión. La <a href="../../actividades/actividad1-prompts/">Actividad 1. Diseño y evaluación de prompts</a> dispone de cuatro horas adicionales y se desarrollará por separado.</p>
+<table>
+<thead>
+<tr>
+<th>Recorrido</th>
+<th style="text-align: right;">Tiempo orientativo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Del resultado deseado a una instrucción útil</td>
+<td style="text-align: right;">20 min</td>
+</tr>
+<tr>
+<td>2. Componentes de un prompt</td>
+<td style="text-align: right;">35 min</td>
+</tr>
+<tr>
+<td>3. Estrategias de diseño</td>
+<td style="text-align: right;">40 min</td>
+</tr>
+<tr>
+<td>4. Diseño de la interacción</td>
+<td style="text-align: right;">30 min</td>
+</tr>
+<tr>
+<td>5. Ejemplos y evaluación inicial</td>
+<td style="text-align: right;">40 min</td>
+</tr>
+<tr>
+<td>6. Síntesis y comprobación</td>
+<td style="text-align: right;">15 min</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>180 min</strong></td>
+</tr>
+</tbody>
+</table>
+<p>En el <a href="../tema1-modelos-y-sistemas/">Tema 1</a> distinguimos el modelo de la aplicación que lo integra. Ahora examinaremos una de las decisiones más visibles para quien diseña esa aplicación: <strong>qué instrucciones recibe el modelo y cómo se organiza el intercambio con la persona usuaria</strong>. Un prompt puede ser un mensaje escrito en un chat o parte de una aplicación que construye mensajes a partir de datos. En ambos casos, su calidad depende de la tarea y del contexto, no de una fórmula universal.</p>
+<p><strong>Al finalizar podrás</strong> delimitar una tarea, redactar un prompt con información y criterios pertinentes, diseñar preguntas de aclaración cuando sean necesarias y analizar fallos antes de cambiar la instrucción.</p>
+<h2 id="1-del-resultado-deseado-a-una-instruccion-util">1. Del resultado deseado a una instrucción útil</h2>
+<p>Una docente solicita: «Háblame de bases de datos». La respuesta podría ser correcta y, sin embargo, no servirle: quizá necesitaba una explicación para estudiantes sin experiencia, una comparación entre modelos de datos o un texto para introducir una práctica. El problema inicial no consiste en encontrar una palabra especial que active una respuesta perfecta. Consiste en especificar <strong>qué trabajo se quiere realizar</strong> y <strong>para quién</strong>.</p>
+<p>Podríamos concretar: «Explica a estudiantes de primer curso qué diferencia una tabla de una base de datos. Usa un ejemplo de una biblioteca universitaria, limita la respuesta a dos párrafos y evita fórmulas». Aquí se aclaran la audiencia, el objeto, un ejemplo adecuado y la forma de la salida. Todavía habría que revisar si la explicación resultante es correcta, pero ya disponemos de un criterio para juzgar su utilidad.</p>
+<details>
+<summary><strong>Antes de escribir: cuatro preguntas de diseño</strong></summary>
+
+<p>1. ¿Qué producto concreto se espera: explicación, borrador, extracción de datos o comparación?</p>
+<p>2. ¿Qué información necesita el modelo para hacerlo con fundamento?</p>
+<p>3. ¿Qué debe hacer si la información no basta o la petición es ambigua?</p>
+<p>4. ¿Cómo reconoceremos una salida aceptable?</p>
+
+Es posible que, tras responderlas, el problema se resuelva mejor con un formulario, una búsqueda documental o una revisión humana. El prompt es una pieza del sistema, no el punto de partida obligatorio de toda solución.
+
+</details>
+
+<h2 id="2-componentes-de-un-prompt">2. Componentes de un prompt</h2>
+<p>Podemos pensar en un prompt como una <strong>especificación de trabajo para una interacción concreta</strong>. Según la tarea, tendrá algunos de los siguientes elementos:</p>
+<table>
+<thead>
+<tr>
+<th>Elemento</th>
+<th>Pregunta que responde</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Objetivo</td>
+<td>¿Qué hay que hacer?</td>
+<td>«Compara dos definiciones».</td>
+</tr>
+<tr>
+<td>Destinatario</td>
+<td>¿Para quién es la salida?</td>
+<td>«Para alumnado que comienza la asignatura».</td>
+</tr>
+<tr>
+<td>Material de entrada</td>
+<td>¿Con qué información?</td>
+<td>«Usa los dos fragmentos incluidos debajo».</td>
+</tr>
+<tr>
+<td>Alcance</td>
+<td>¿Qué queda incluido o excluido?</td>
+<td>«No añadas afirmaciones externas a los fragmentos».</td>
+</tr>
+<tr>
+<td>Criterios de calidad</td>
+<td>¿Qué hace útil el resultado?</td>
+<td>«Señala una semejanza y dos diferencias verificables».</td>
+</tr>
+<tr>
+<td>Formato</td>
+<td>¿Cómo se presentará?</td>
+<td>«Tabla con tres columnas».</td>
+</tr>
+<tr>
+<td>Tratamiento de la incertidumbre</td>
+<td>¿Qué hacer si falta información?</td>
+<td>«Indica qué dato falta; no lo inventes».</td>
+</tr>
+</tbody>
+</table>
+<p>No es necesario incluir siempre los siete elementos. Un prompt puede ser breve si la tarea es simple. Añadir detalles irrelevantes puede dificultar la interpretación. Lo que buscamos es suficiente información para <strong>reducir la ambigüedad significativa</strong>, no alcanzar una longitud determinada.</p>
+<h3 id="una-plantilla-legible">Una plantilla legible</h3>
+<p>La siguiente estructura sirve para planificar un prompt. Los corchetes son campos que se sustituirían por contenido real:</p>
+<pre><code class="language-text">Tarea: [acción concreta].
+Destinatario y propósito: [quién usará el resultado y para qué].
+Material disponible: [texto o datos aportados].
+Criterios: [qué se debe conservar, comparar o justificar].
+Límites: [qué evitar y qué hacer cuando falte información].
+Salida: [extensión y formato adecuados].
+</code></pre>
+<p>Por ejemplo: «Reformula el siguiente aviso para estudiantes de nuevo ingreso. Conserva fechas y requisitos literalmente; usa lenguaje claro y no agregues trámites. Si alguna frase del aviso es ambigua, señálala después de la reformulación. Devuelve dos párrafos y una lista breve de dudas». Aquí el modelo puede ayudar a mejorar la comunicación, mientras que la responsabilidad sobre las fechas permanece en quien publica el aviso.</p>
+<details>
+<summary><strong>¿Asignar un rol como «eres una experta» mejora siempre el resultado?</strong></summary>
+
+Una indicación de perspectiva o función puede ayudar a definir tono y nivel: «Explica esto como material introductorio para estudiantes universitarios». Sin embargo, asignar una identidad no aporta documentos, competencias profesionales verificadas ni acceso a datos actuales. Es más útil describir la tarea y sus criterios que confiar en la autoridad aparente de un personaje.
+
+</details>
+
+<details>
+<summary><strong>Cómo distinguir instrucciones de material que se analiza</strong></summary>
+
+Si se facilita un texto para resumir, conviene introducirlo con una etiqueta como «Texto de entrada» y delimitar su principio y final. El sistema debe tratar ese texto como <strong>datos</strong>, aunque incluya frases con forma de órdenes. Los delimitadores hacen la petición más legible, pero no constituyen por sí solos una defensa suficiente frente a instrucciones maliciosas insertadas en documentos externos.
+
+</details>
+
+<p><img alt="Componentes de una instrucción para un modelo generativo" src="../../../assets/images/tema2-componentes-prompt.png" style="display:block; margin:auto;" width="350" /></p>
+<p><small><strong>Imagen.</strong> <em>Elementos que delimitan una tarea y orientan la respuesta del sistema.</em></small></p>
+<h2 id="3-estrategias-de-diseno">3. Estrategias de diseño</h2>
+<h3 id="31-delimitar-la-tarea-y-el-criterio-de-exito">3.1. Delimitar la tarea y el criterio de éxito</h3>
+<p>«Mejora este texto» abre varias posibilidades: corregir errores, hacerlo más breve, cambiar el tono o modificar la estructura. Una petición mejor define la operación: «Reescribe este texto para que sea comprensible para alumnado de primer curso; conserva las tres condiciones de entrega y no cambies las fechas». El criterio de éxito no es solo que el texto suene mejor, sino que <strong>mantenga las condiciones de entrega</strong>.</p>
+<p>Si la tarea contiene varias operaciones, ordenarlas ayuda: «Primero identifica los requisitos explícitos; después redacta una explicación sencilla; por último enumera las dudas que el documento no resuelve». Esto organiza la salida observable. No hace falta pedir al modelo que revele un razonamiento interno completo; para comprobar la respuesta son más útiles criterios verificables, fuentes y una justificación breve cuando proceda.</p>
+<h3 id="32-aportar-el-material-necesario-y-distinguirlo-de-las-instrucciones">3.2. Aportar el material necesario y distinguirlo de las instrucciones</h3>
+<p>Pedir «resume la guía del curso» sin adjuntar o enlazar la versión vigente deja abierta la fuente. Si la persona introduce el fragmento en la conversación, debe indicar cuál es el texto que se resume y qué aspectos interesan. Si una aplicación recupera documentos automáticamente, la selección de esos fragmentos es una decisión del sistema estudiada más adelante, no una propiedad mágica del prompt.</p>
+<p>Una formulación prudente sería: «Usa exclusivamente el fragmento delimitado para identificar los plazos que aparecen en él. Si no menciona un plazo, responde “No consta en el fragmento”». Pedirlo no garantiza obediencia perfecta: hay que comprobar la salida frente al material.</p>
+<h3 id="33-mostrar-uno-o-varios-ejemplos-cuando-el-patron-resulte-dificil-de-explicar">3.3. Mostrar uno o varios ejemplos cuando el patrón resulte difícil de explicar</h3>
+<p>Un ejemplo de entrada y salida puede enseñar el formato esperado. Supongamos que queremos transformar observaciones breves en comentarios formativos:</p>
+<pre><code class="language-text">EJEMPLO
+Indicando ejemplos de entrada-salida
+Ejemplo de entrada: «No se citan las fuentes».
+Ejemplo de salida: «Añade las fuentes de los datos utilizados para que sea posible comprobar las afirmaciones».
+
+NUEVA ENTRADA
+Ahora reformula esta observación manteniendo su significado:
+«La conclusión no se desprende de los resultados».
+</code></pre>
+<p>Esto se conoce como uso de ejemplos en el propio prompt. Son útiles cuando el tono o la transformación deseada no quedan claros con una instrucción general. La elección del ejemplo también puede introducir sesgos: si solo mostramos respuestas excesivamente largas, la salida puede imitar esa longitud. Conviene revisar que el ejemplo refleje de verdad el objetivo.</p>
+<details>
+<summary><strong>¿Cuántos ejemplos hacen falta?</strong></summary>
+
+No existe un número universal. Puede bastar una descripción clara sin ejemplos. Si la tarea tiene un formato poco habitual, se puede probar con uno y añadir otro que muestre un caso diferente. Cada ejemplo ocupa espacio en el contexto y puede inducir una generalización errónea. La decisión debe apoyarse en pruebas con entradas representativas.
+
+</details>
+
+<h3 id="34-definir-la-forma-de-la-respuesta-sin-confundir-forma-y-verdad">3.4. Definir la forma de la respuesta sin confundir forma y verdad</h3>
+<p>Se puede solicitar una tabla, tres apartados, un resumen de cien palabras o un objeto con campos concretos. El formato facilita la lectura y la revisión, pero una tabla bien presentada puede contener errores. En una aplicación que deba procesar automáticamente la respuesta, un formato solicitado mediante texto libre puede no ser suficiente: cuando la plataforma ofrezca salidas estructuradas con validación, habrá que valorar esa opción y comprobar siempre los valores recibidos.</p>
+<h3 id="35-preparar-la-respuesta-cuando-no-hay-base-suficiente">3.5. Preparar la respuesta cuando no hay base suficiente</h3>
+<p>«No inventes» es una instrucción útil, pero muy general. Conviene formular una conducta observable: «Si el fragmento no incluye la fecha, escribe “Fecha no indicada en el material facilitado” y explica brevemente dónde sería necesario consultarla». Después se prueban casos en los que el dato existe, no existe o es contradictorio. Reconocer el límite es parte de un buen resultado.</p>
+<details>
+<summary><strong>Una estrategia que suele empeorar el prompt</strong></summary>
+
+Acumular frases como «sé siempre preciso, completo, creativo, muy breve y exhaustivo» genera objetivos difíciles de conciliar. Es preferible priorizar: por ejemplo, exactitud de fechas y conservación de requisitos antes que elegancia del estilo. Si se necesitan dos productos distintos, puede ser más claro pedir dos salidas separadas.
+
+</details>
+
+<h2 id="4-diseno-de-la-interaccion">4. Diseño de la interacción</h2>
+<p>Un sistema conversacional debe decidir <strong>cuándo responder, cuándo pedir una aclaración y cuándo reconocer un límite</strong>. Ante «Resume el informe», puede faltar el propio informe. Ante «¿Cuándo se entrega?», puede haber varias entregas. Ante «Haz que la calificación sea más justa», es posible que se necesiten criterios que el sistema no posee. Responder de inmediato a todas las peticiones crea la apariencia de fluidez, pero puede reducir la utilidad.</p>
+<h3 id="una-regla-sencilla-para-aclarar">Una regla sencilla para aclarar</h3>
+<p>Si una ambigüedad puede cambiar materialmente la respuesta, conviene preguntar lo mínimo necesario: «¿Te refieres a la memoria escrita o a la exposición oral?». Si la duda no afecta al resultado, es posible avanzar indicando el supuesto adoptado. El diseño de esta regla evita tanto una conversación interminable de preguntas como una respuesta apoyada en suposiciones ocultas.</p>
+<p>La siguiente tabla muestra cómo puede traducirse este criterio en <strong>reglas concretas de comportamiento</strong>. La respuesta del sistema dependerá de qué información falte, de la importancia que tenga para resolver la tarea y de si la decisión puede tomarse dentro de los límites establecidos.</p>
+<table>
+<thead>
+<tr>
+<th>Situación</th>
+<th>Comportamiento esperado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Falta un documento imprescindible.</td>
+<td>Solicitarlo antes de resumirlo.</td>
+</tr>
+<tr>
+<td>Hay dos interpretaciones con consecuencias diferentes.</td>
+<td>Plantear una pregunta de aclaración breve.</td>
+</tr>
+<tr>
+<td>La petición está clara, pero falta un dato secundario.</td>
+<td>Avanzar y señalar el supuesto.</td>
+</tr>
+<tr>
+<td>La tarea requiere una decisión fuera del alcance del sistema.</td>
+<td>Explicar el límite y derivar a quien corresponda.</td>
+</tr>
+</tbody>
+</table>
+<p>El objetivo no es que el sistema pregunte siempre que detecte una incertidumbre, sino que <strong>distinga cuándo necesita detenerse y pedir información, cuándo puede continuar haciendo explícito un supuesto y cuándo debe reconocer que la decisión queda fuera de su alcance</strong>. Estas reglas forman parte de las instrucciones con las que diseñamos su comportamiento.</p>
+<p>En una aplicación, unas instrucciones generales pueden establecer el comportamiento del asistente y cada persona aportar después su petición y sus datos. Además, los documentos recuperados deben tratarse como información para analizar, no como órdenes que puedan reemplazar las instrucciones de la aplicación. La forma exacta de representar estos niveles depende de la plataforma; lo importante es mantener clara la distinción <strong>instrucción / petición / dato externo</strong>.</p>
+<h3 id="iterar-con-un-proposito">Iterar con un propósito</h3>
+<p>Una interacción avanzada no consiste en añadir «hazlo mejor» una y otra vez. Conviene identificar el fallo y cambiar una cosa cada vez: destinatario mal definido, información ausente, criterio demasiado vago o formato poco útil. Se conserva un caso de prueba para observar si la revisión resolvió ese fallo sin introducir otro. Cuando el prompt se incorpora a una aplicación, conviene guardar sus versiones y las observaciones de las pruebas.</p>
+<p><img alt="Decisiones ante una petición de la persona usuaria" src="../../../assets/images/tema2-decisiones-interaccion.png" style="display:block; margin:auto;" width="500" /></p>
+<p><small><strong>Imagen.</strong> <em>Flujo de decisión ante información insuficiente, ambigüedad o peticiones fuera del alcance del sistema.</em></small></p>
+<details>
+<summary><strong>¿Y la memoria de una conversación larga?</strong></summary>
+
+En este tema analizamos turnos de una interacción y la información necesaria para la tarea actual. La selección, conservación y recuperación del contexto entre turnos prolongados, así como las posibles memorias del sistema, se estudian en el <a href="../tema3-contexto-y-memoria">Tema 3: Contexto y memoria</a>.
+
+</details>
+
+<h2 id="5-ejemplos-desarrollados-y-evaluacion-inicial">5. Ejemplos desarrollados y evaluación inicial</h2>
+<p>Los siguientes archivos muestran cómo cambian el prompt y el comportamiento esperado al concretar una necesidad. Son <strong>casos didácticos ficticios</strong> y los fragmentos que presentan como posibles salidas no son resultados medidos de un modelo concreto.</p>
+<ol>
+<li><a href="../ejemplos/tema2-ejemplo1-explicacion-docente/">Ejemplo 1. Explicaciones docentes adaptadas a una audiencia</a>: reformulación progresiva de un prompt y contraste con criterios pedagógicos.</li>
+<li><a href="../ejemplos/tema2-ejemplo2-extraccion-convocatoria/">Ejemplo 2. Extraer información de una convocatoria ficticia</a>: separación de instrucciones y documento, definición de campos, datos ausentes y necesidad de revisión.</li>
+</ol>
+<p>Después de revisar los ejemplos, podemos realizar una <strong>primera evaluación de las respuestas</strong> mediante un conjunto reducido de criterios. La siguiente tabla propone preguntas sencillas que permiten comprobar distintos aspectos del resultado sin limitar la evaluación a una impresión general.</p>
+<table>
+<thead>
+<tr>
+<th>Criterio</th>
+<th>Pregunta de comprobación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Adecuación</td>
+<td>¿Resuelve la necesidad de la persona destinataria?</td>
+</tr>
+<tr>
+<td>Fidelidad</td>
+<td>¿Conserva los datos del material original?</td>
+</tr>
+<tr>
+<td>Cobertura</td>
+<td>¿Incluye todos los elementos solicitados?</td>
+</tr>
+<tr>
+<td>Manejo de incertidumbre</td>
+<td>¿Reconoce lo que no consta o es ambiguo?</td>
+</tr>
+<tr>
+<td>Presentación</td>
+<td>¿Facilita revisar y utilizar el resultado?</td>
+</tr>
+</tbody>
+</table>
+<p>Utiliza estas preguntas para revisar las posibles salidas de los dos ejemplos anteriores e identifica en cada caso qué criterios resultan más relevantes y qué aspectos podrían mejorarse.</p>
+<p>No todos los criterios tienen la misma importancia en todas las tareas. Si se extrae una fecha oficial, por ejemplo, la <strong>fidelidad</strong> es crucial; si se adapta una explicación a una audiencia concreta, tendrá especial relevancia la <strong>adecuación</strong>. Evaluar una respuesta implica, por tanto, seleccionar los criterios pertinentes para la necesidad planteada y comprobarlos de forma explícita.</p>
+<h2 id="6-sintesis-y-comprobacion">6. Síntesis y comprobación</h2>
+<p>Diseñar un prompt significa formular una tarea con el material, los límites y las señales de calidad pertinentes. Diseñar la interacción añade decisiones sobre aclaraciones, seguimiento y tratamiento de casos que no se pueden resolver. Estas decisiones deben evaluarse en ejemplos concretos y pueden requerir componentes adicionales de la aplicación.</p>
+<ol>
+<li>¿Qué falta en «Resume el artículo» si la aplicación no tiene acceso al artículo?</li>
+<li>¿Por qué pedir una tabla no garantiza que los datos de la tabla sean correctos?</li>
+<li>Si una pregunta admite dos respuestas distintas según lo que signifique «entrega», ¿qué debería hacer el sistema?</li>
+<li>¿Qué cambiarías primero si un prompt genera respuestas elegantes pero altera las fechas originales?</li>
+</ol>
+<details>
+<summary><strong>Orientaciones para contrastar las respuestas</strong></summary>
+
+<p>1. Falta el material de entrada: habría que aportarlo o pedirlo.</p>
+<p>2. El formato organiza la salida; la veracidad exige contrastar los datos con la fuente.</p>
+<p>3. Pedir una aclaración breve si la ambigüedad afecta de manera importante al contenido.</p>
+<p>4. Precisar que conserve literalmente las fechas, incluir el texto fuente y comprobarlas mediante casos de prueba. Si el problema persiste, añadir un control externo a la generación.</p>
+
+</details>
+
+<p><strong>Para continuar:</strong> la <a href="../../actividades/actividad1-prompts/">Actividad 1</a> permitirá diseñar, comparar y revisar propuestas de interacción. El <a href="../tema3-contexto-y-memoria/">Tema 3</a> abordará qué información conservar cuando la conversación se prolonga.</p>
+<h3 id="lecturas-de-referencia-y-ampliacion">Lecturas de referencia y ampliación</h3>
+<ul>
+<li><a href="https://mltechdrawer.github.io/ChatGPT/2_IP/">ChatGPT: Ingeniería de Prompts</a>. Material docente anterior con anatomía, tipos y técnicas de prompting; este tema selecciona los fundamentos necesarios para diseñar un sistema.</li>
+<li><a href="https://mltechdrawer.github.io/CompetenciaDigitalIA/bloque2/sesion4/">Competencia Digital e IA Aplicada: diseño de workflows</a>. Relaciona interacciones puntuales con procesos organizados.</li>
+<li><a href="https://ai.google.dev/gemini-api/docs/prompting-strategies?hl=es">Google AI for Developers: estrategias de diseño de instrucciones</a>. Documentación técnica con ejemplos de instrucciones, formatos y aportación de material.</li>
+<li><a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/prompt-templates-and-variables">Anthropic: buenas prácticas de prompting</a>. Referencia complementaria para claridad, estructura y ejemplos.</li>
+</ul>
+<p><a href="../../">Volver a la presentación del bloque</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>

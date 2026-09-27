@@ -1,0 +1,1609 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Microcredencial universitaria de 3 ECTS">
+      
+      
+      
+      
+        <link rel="prev" href="../bloque3/actividades/actividad5-integracion/">
+      
+      
+        <link rel="next" href="../recursos/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Proyecto final - Diseño de Sistemas de Inteligencia Artificial Generativa</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#proyecto-final" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href=".." title="Diseño de Sistemas de Inteligencia Artificial Generativa" class="md-header__button md-logo" aria-label="Diseño de Sistemas de Inteligencia Artificial Generativa" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Diseño de Sistemas de Inteligencia Artificial Generativa
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Proyecto final
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Diseño de Sistemas de Inteligencia Artificial Generativa" class="md-nav__button md-logo" aria-label="Diseño de Sistemas de Inteligencia Artificial Generativa" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Diseño de Sistemas de Inteligencia Artificial Generativa
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    La microcredencial
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            La microcredencial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../microcredencial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Presentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../microcredencial/resultados-de-aprendizaje/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Resultados de aprendizaje
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../microcredencial/organizacion-y-metodologia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Organización y metodología
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Bloque I. Interacción y contexto
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Bloque I. Interacción y contexto
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bloque1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Presentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Teoría
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Teoría
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bloque1/teoria/tema1-modelos-y-sistemas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 1. Modelos y sistemas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bloque1/teoria/tema2-prompts-e-interaccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 2. Prompts e interacción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bloque1/teoria/tema3-contexto-y-memoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 3. Contexto y memoria
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Actividades
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Actividades
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bloque1/actividades/actividad1-prompts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad 1. Prompts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bloque1/actividades/actividad2-interaccion-contextual/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad 2. Interacción contextual
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Bloque II. Conocimiento y automatización
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Bloque II. Conocimiento y automatización
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bloque2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Presentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Teoría
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Teoría
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bloque2/teoria/tema4-conocimiento-externo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 4. Conocimiento externo
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bloque2/teoria/tema5-sistemas-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 5. Sistemas RAG
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bloque2/teoria/tema6-automatizacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 6. Automatización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Actividades
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Actividades
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bloque2/actividades/actividad3-prototipo-con-conocimiento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad 3. Prototipo con conocimiento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bloque2/actividades/actividad4-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad 4. Workflow con IA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Bloque III. Diseño y evaluación
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Bloque III. Diseño y evaluación
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bloque3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Presentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Teoría
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Teoría
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bloque3/teoria/tema7-arquitectura-e-integracion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 7. Arquitectura e integración
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bloque3/teoria/tema8-calidad-y-evaluacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 8. Calidad y evaluación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bloque3/actividades/actividad5-integracion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad de integración
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Proyecto final
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Proyecto final
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-elegir-un-problema-concreto" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Elegir un problema concreto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-trabajo-previsto-y-dedicacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Trabajo previsto y dedicación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Trabajo previsto y dedicación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arquitectura-minima-que-debe-poder-explicarse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arquitectura mínima que debe poder explicarse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-prototipo-y-condiciones-de-trabajo" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Prototipo y condiciones de trabajo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-plan-minimo-de-evaluacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Plan mínimo de evaluación
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-entregables-y-presentacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Entregables y presentación
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-criterios-orientativos-de-revision" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Criterios orientativos de revisión
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Criterios orientativos de revisión">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comprobacion-antes-de-presentar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comprobación antes de presentar
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recursos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Recursos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bibliografia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bibliografía
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-elegir-un-problema-concreto" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Elegir un problema concreto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-trabajo-previsto-y-dedicacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Trabajo previsto y dedicación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Trabajo previsto y dedicación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arquitectura-minima-que-debe-poder-explicarse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arquitectura mínima que debe poder explicarse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-prototipo-y-condiciones-de-trabajo" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Prototipo y condiciones de trabajo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-plan-minimo-de-evaluacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Plan mínimo de evaluación
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-entregables-y-presentacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Entregables y presentación
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-criterios-orientativos-de-revision" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Criterios orientativos de revisión
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Criterios orientativos de revisión">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comprobacion-antes-de-presentar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comprobación antes de presentar
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="proyecto-final">Proyecto final</h1>
+<p><strong>Dedicación estimada: 18 horas</strong>, incluidas en el Bloque III y en el total de 75 horas de la microcredencial. Las <strong>6 horas de evaluación y cierre</strong> que figuran en la página de Inicio se contabilizan por separado; aquí se incluye la <strong>preparación</strong> de la presentación, sin sumar dos veces la exposición y el cierre.</p>
+<p>El proyecto consiste en <strong>diseñar, desarrollar y evaluar un prototipo de sistema de IA generativa</strong> que responda a una necesidad realista de un ámbito docente, investigador o profesional. Cada participante elige un caso acorde con su perfil. Se espera un prototipo delimitado y verificable, no una aplicación lista para despliegue institucional.</p>
+<h2 id="1-elegir-un-problema-concreto">1. Elegir un problema concreto</h2>
+<p>El caso debe poder describirse en términos de <strong>persona destinataria, necesidad, información disponible y resultado útil</strong>. Algunos ejemplos son consultar instrucciones de un proyecto, preparar borradores fundamentados en documentos, apoyar la organización de un curso o supervisar un pequeño flujo de trabajo. Pueden elegirse otros casos si permiten justificar sus decisiones y probarlos con datos autorizados.</p>
+<p>Un sistema debe ofrecer algo más que una pregunta aislada a un chatbot. Debe integrar una interacción definida y <strong>al menos otra capacidad que resulte necesaria para el caso</strong>, como estado contextual, recuperación de fuentes o pasos de automatización supervisados. La elección se justifica por la necesidad; no se exige añadir todas las capacidades solo para marcar una lista. Se valorará también la explicación de <strong>por qué se excluyen</strong> otras piezas.</p>
+<details>
+<summary><strong>Ejemplo de delimitación</strong></summary>
+
+«El equipo de un proyecto recibe preguntas sobre la última versión de sus instrucciones. El prototipo identifica el documento vigente, recupera el apartado relevante, propone una respuesta con referencia y reconoce cuándo no consta. No resuelve excepciones individuales ni envía mensajes automáticamente».
+
+La descripción identifica una necesidad y un límite. La calidad del proyecto dependerá después de que la selección de fuentes y las respuestas **funcionen en pruebas**, no solo de que el objetivo suene pertinente.
+
+</details>
+
+<h2 id="2-trabajo-previsto-y-dedicacion">2. Trabajo previsto y dedicación</h2>
+<table>
+<thead>
+<tr>
+<th>Etapa</th>
+<th>Trabajo principal</th>
+<th style="text-align: right;">Tiempo orientativo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Delimitar caso y arquitectura</td>
+<td>Necesidad, alcance, fuentes, datos, componentes y riesgos principales.</td>
+<td style="text-align: right;">3 h</td>
+</tr>
+<tr>
+<td>Desarrollar el prototipo</td>
+<td>Integrar interacción y capacidades seleccionadas; documentar configuración y versiones.</td>
+<td style="text-align: right;">7 h</td>
+</tr>
+<tr>
+<td>Probar y corregir</td>
+<td>Ejecutar casos normales, ambiguos y de fallo; reparar al menos un problema importante.</td>
+<td style="text-align: right;">5 h</td>
+</tr>
+<tr>
+<td>Preparar comunicación</td>
+<td>Informe breve, demostración y presentación oral.</td>
+<td style="text-align: right;">3 h</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td style="text-align: right;"><strong>18 h</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Los materiales y pruebas de las actividades anteriores pueden aprovecharse como <strong>punto de partida</strong>. Las 18 horas del proyecto corresponden al desarrollo y revisión adicionales del prototipo final; el tiempo ya invertido en las actividades tiene su propia asignación.</p>
+<h3 id="arquitectura-minima-que-debe-poder-explicarse">Arquitectura mínima que debe poder explicarse</h3>
+<p>Identifica entradas, salida, instrucciones, estado si se utiliza, fuentes y su versión si se recuperan, herramientas y permisos si se automatiza, y puntos de revisión humana. Explica el recorrido de <strong>una petición real</strong> entre esos componentes. Una tabla o diagrama sencillo con descripción de decisiones suele ser suficiente.</p>
+<!-- IMAGEN OPCIONAL: ejemplo genérico y propio de arquitectura con «Persona → Interfaz → Orquestación → Modelo», y conexiones condicionales a contexto, fuentes, herramientas y revisión. Guardar en docs/assets/images/proyecto-arquitectura.png y enlazar aquí solo si se crea. -->
+
+<h2 id="3-prototipo-y-condiciones-de-trabajo">3. Prototipo y condiciones de trabajo</h2>
+<p>Se puede realizar con un entorno conversacional configurado, una herramienta sin código o una aplicación sencilla. No es obligatorio programar ni emplear servicios de pago. Sí debe existir <strong>una ejecución observable</strong>, con entradas y salidas reales del componente generativo; las herramientas externas que no se conecten se marcarán como simuladas. Una presentación de la idea sin prototipo probado no completa el trabajo.</p>
+<p>Si el caso requiere documentos, utiliza material público, propio y autorizado o versiones ficticias representativas. Si implica decisiones sobre personas, evita automatizarlas sin supervisión: delimita el prototipo a propuestas revisables. No introduzcas datos personales o información reservada en herramientas externas para demostrar el funcionamiento.</p>
+<details>
+<summary><strong>¿Qué significa «desarrollar» si no se programa?</strong></summary>
+
+Significa construir y probar el comportamiento del sistema: definir instrucciones, preparar fuentes o estado, configurar pasos, ejecutar consultas y registrar qué información recibió el modelo y qué produjo. La herramienta elegida no sustituye la explicación de esas decisiones ni la evidencia de las pruebas.
+
+</details>
+
+<h2 id="4-plan-minimo-de-evaluacion">4. Plan mínimo de evaluación</h2>
+<p>Antes de ejecutar las pruebas, define qué debería ocurrir en <strong>al menos seis casos</strong> adaptados a tu sistema:</p>
+<table>
+<thead>
+<tr>
+<th>Caso</th>
+<th>Pregunta que debe responder la prueba</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ordinario</td>
+<td>¿Resuelve una petición habitual con información suficiente?</td>
+</tr>
+<tr>
+<td>Variación</td>
+<td>¿Mantiene un resultado adecuado si cambia la formulación?</td>
+</tr>
+<tr>
+<td>Incompleto o ambiguo</td>
+<td>¿Pide aclaración o indica el límite?</td>
+</tr>
+<tr>
+<td>Fuente o decisión corregida</td>
+<td>¿Utiliza la versión vigente?</td>
+</tr>
+<tr>
+<td>Fuera de alcance</td>
+<td>¿Se abstiene de tomar una decisión no autorizada?</td>
+</tr>
+<tr>
+<td>Fallo controlado</td>
+<td>¿Comunica que una fuente o herramienta no está disponible?</td>
+</tr>
+</tbody>
+</table>
+<p>Si el caso no usa fuentes ni herramientas, adapta esos casos a sus componentes; por ejemplo, una corrección de estado o un dato de entrada contradictorio. Registra <strong>entrada, contexto, esperado, observado y juicio</strong>. Comprueba las citas cuando las haya, repite el caso más problemático tras una corrección y comunica qué <strong>no se ha probado</strong>. Los seis casos sirven para detectar fallos del prototipo; no justifican afirmar una fiabilidad estadística general.</p>
+<p>Las observaciones deben cubrir, en la medida pertinente, <strong>adecuación</strong>, <strong>fidelidad a fuentes y datos</strong>, <strong>robustez</strong> ante variaciones, <strong>seguridad y permisos</strong> de las acciones, y <strong>trazabilidad</strong>. Para guiar las pruebas pueden consultarse el <a href="../bloque3/teoria/tema8-calidad-y-evaluacion/">Tema 8</a> y la <a href="../bloque3/actividades/actividad5-integracion/">Actividad 5</a>.</p>
+<h2 id="5-entregables-y-presentacion">5. Entregables y presentación</h2>
+<p>El trabajo se comunicará mediante:</p>
+<ol>
+<li><strong>Prototipo o demostración reproducible:</strong> acceso o instrucciones suficientes para ejecutar el recorrido principal; si no puede compartirse la herramienta, capturas o registro que permitan comprobarlo.</li>
+<li><strong>Informe escrito breve:</strong> aproximadamente <strong>3–4 páginas</strong>, sin contar portada y anexos opcionales. Debe incluir necesidad y destinatarios; arquitectura y decisiones; pruebas con resultados y una corrección; limitaciones y siguiente mejora. Puede remitir a un anexo de instrucciones o salidas, en lugar de copiar transcripciones largas en el cuerpo.</li>
+<li><strong>Presentación oral de 10–15 minutos:</strong> contexto y necesidad, recorrido del prototipo, dos pruebas reveladoras —una de ellas puede ser un fallo y su corrección—, límites y conclusión. Se reserva tiempo para mostrar el funcionamiento o una demostración registrada.</li>
+</ol>
+<p>La presentación no necesita repetir página por página el informe. Conviene mostrar qué problema resuelve el prototipo y <strong>qué evidencia sostiene</strong> la valoración del resultado.</p>
+<details>
+<summary><strong>Guion orientativo para 10–15 minutos</strong></summary>
+
+**2 min:** necesidad y destinatarios. **3 min:** componentes y recorrido de datos. **4–5 min:** demostración y dos pruebas. **2–3 min:** error, corrección y límites. **1–2 min:** conclusión y posible siguiente paso. Los tiempos se ajustan a la demostración, sin exceder el intervalo total.
+
+</details>
+
+<h2 id="6-criterios-orientativos-de-revision">6. Criterios orientativos de revisión</h2>
+<table>
+<thead>
+<tr>
+<th>Dimensión</th>
+<th>Evidencia que se espera encontrar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pertinencia del caso</td>
+<td>Necesidad concreta y alcance razonable.</td>
+</tr>
+<tr>
+<td>Coherencia del diseño</td>
+<td>Componentes justificados y flujo comprensible.</td>
+</tr>
+<tr>
+<td>Funcionamiento</td>
+<td>Recorrido ejecutado y resultados observables.</td>
+</tr>
+<tr>
+<td>Evaluación</td>
+<td>Pruebas variadas, esperado frente a observado, diagnóstico y corrección.</td>
+</tr>
+<tr>
+<td>Responsabilidad</td>
+<td>Fuentes y permisos adecuados, supervisión y límites explícitos.</td>
+</tr>
+<tr>
+<td>Comunicación</td>
+<td>Informe conciso y presentación que permite entender la evidencia.</td>
+</tr>
+</tbody>
+</table>
+<p>Estos criterios describen qué revisar en el trabajo y <strong>no asignan porcentajes ni sustituyen la rúbrica oficial</strong>. Las fechas, el modo de entrega y la calificación se indicarán en el Campus Virtual.</p>
+<h3 id="comprobacion-antes-de-presentar">Comprobación antes de presentar</h3>
+<ul>
+<li>¿La necesidad elegida está alineada con el perfil profesional de quien presenta?</li>
+<li>¿Se sabe qué hace cada componente y de dónde procede la información?</li>
+<li>¿La demostración distingue salidas reales de pasos simulados?</li>
+<li>¿Se muestran un fallo o límite y su tratamiento?</li>
+<li>¿El informe breve y la presentación caben en el tiempo previsto?</li>
+</ul>
+<p><a href="../bloque3/">Volver al Bloque III</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>

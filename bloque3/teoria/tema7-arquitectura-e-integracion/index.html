@@ -1,0 +1,1769 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Microcredencial universitaria de 3 ECTS">
+      
+      
+      
+      
+        <link rel="prev" href="../../">
+      
+      
+        <link rel="next" href="../tema8-calidad-y-evaluacion/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Tema 7. Arquitectura e integración - Diseño de Sistemas de Inteligencia Artificial Generativa</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tema-7-arquitectura-e-integracion-de-sistemas-de-ia-generativa" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../.." title="Diseño de Sistemas de Inteligencia Artificial Generativa" class="md-header__button md-logo" aria-label="Diseño de Sistemas de Inteligencia Artificial Generativa" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Diseño de Sistemas de Inteligencia Artificial Generativa
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tema 7. Arquitectura e integración
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Diseño de Sistemas de Inteligencia Artificial Generativa" class="md-nav__button md-logo" aria-label="Diseño de Sistemas de Inteligencia Artificial Generativa" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Diseño de Sistemas de Inteligencia Artificial Generativa
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    La microcredencial
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            La microcredencial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microcredencial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Presentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microcredencial/resultados-de-aprendizaje/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Resultados de aprendizaje
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microcredencial/organizacion-y-metodologia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Organización y metodología
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Bloque I. Interacción y contexto
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Bloque I. Interacción y contexto
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Presentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Teoría
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Teoría
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque1/teoria/tema1-modelos-y-sistemas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 1. Modelos y sistemas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque1/teoria/tema2-prompts-e-interaccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 2. Prompts e interacción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque1/teoria/tema3-contexto-y-memoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 3. Contexto y memoria
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Actividades
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Actividades
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque1/actividades/actividad1-prompts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad 1. Prompts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque1/actividades/actividad2-interaccion-contextual/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad 2. Interacción contextual
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Bloque II. Conocimiento y automatización
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Bloque II. Conocimiento y automatización
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Presentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Teoría
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Teoría
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque2/teoria/tema4-conocimiento-externo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 4. Conocimiento externo
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque2/teoria/tema5-sistemas-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 5. Sistemas RAG
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque2/teoria/tema6-automatizacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 6. Automatización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Actividades
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Actividades
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque2/actividades/actividad3-prototipo-con-conocimiento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad 3. Prototipo con conocimiento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bloque2/actividades/actividad4-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad 4. Workflow con IA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Bloque III. Diseño y evaluación
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Bloque III. Diseño y evaluación
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Presentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Teoría
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Teoría
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Tema 7. Arquitectura e integración
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 7. Arquitectura e integración
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-empezar-por-la-necesidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Empezar por la necesidad
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-componentes-y-responsabilidades" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Componentes y responsabilidades
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Componentes y responsabilidades">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#un-limite-claro-para-las-acciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Un límite claro para las acciones
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-seguir-el-recorrido-de-los-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Seguir el recorrido de los datos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Seguir el recorrido de los datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contratos-entre-componentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contratos entre componentes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-integrar-por-etapas-y-observar-el-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Integrar por etapas y observar el sistema
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Integrar por etapas y observar el sistema">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aspectos-de-uso-que-tambien-se-disenan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aspectos de uso que también se diseñan
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-dos-ejemplos-desarrollados" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Dos ejemplos desarrollados
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-sintesis-y-comprobacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Síntesis y comprobación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Síntesis y comprobación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lecturas-de-referencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecturas de referencia
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tema8-calidad-y-evaluacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tema 8. Calidad y evaluación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../actividades/actividad5-integracion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actividad de integración
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../proyecto-final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Proyecto final
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../recursos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Recursos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bibliografia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bibliografía
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-empezar-por-la-necesidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Empezar por la necesidad
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-componentes-y-responsabilidades" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Componentes y responsabilidades
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Componentes y responsabilidades">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#un-limite-claro-para-las-acciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Un límite claro para las acciones
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-seguir-el-recorrido-de-los-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Seguir el recorrido de los datos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Seguir el recorrido de los datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contratos-entre-componentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contratos entre componentes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-integrar-por-etapas-y-observar-el-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Integrar por etapas y observar el sistema
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Integrar por etapas y observar el sistema">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aspectos-de-uso-que-tambien-se-disenan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aspectos de uso que también se diseñan
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-dos-ejemplos-desarrollados" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Dos ejemplos desarrollados
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-sintesis-y-comprobacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Síntesis y comprobación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Síntesis y comprobación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lecturas-de-referencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecturas de referencia
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="tema-7-arquitectura-e-integracion-de-sistemas-de-ia-generativa">Tema 7. Arquitectura e integración de sistemas de IA generativa</h1>
+<p><strong>Dedicación estimada: 3 horas.</strong> Incluye lectura, análisis de dos ejemplos y comprobación. La <a href="../../actividades/actividad5-integracion/">Actividad 5</a> y el <a href="../../../proyecto-final/">proyecto final</a> tienen dedicaciones independientes.</p>
+<table>
+<thead>
+<tr>
+<th>Recorrido</th>
+<th style="text-align: right;">Tiempo orientativo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. De una necesidad a una arquitectura</td>
+<td style="text-align: right;">20 min</td>
+</tr>
+<tr>
+<td>2. Componentes y responsabilidades</td>
+<td style="text-align: right;">35 min</td>
+</tr>
+<tr>
+<td>3. Flujo de datos y decisiones</td>
+<td style="text-align: right;">45 min</td>
+</tr>
+<tr>
+<td>4. Integrar por etapas y observar el sistema</td>
+<td style="text-align: right;">35 min</td>
+</tr>
+<tr>
+<td>5. Dos ejemplos explicados</td>
+<td style="text-align: right;">30 min</td>
+</tr>
+<tr>
+<td>6. Síntesis y comprobación</td>
+<td style="text-align: right;">15 min</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>180 min</strong></td>
+</tr>
+</tbody>
+</table>
+<p>En los bloques anteriores se estudiaron la interacción y el contexto, las fuentes externas, la recuperación y los workflows. Diseñar un sistema completo consiste en decidir <strong>qué piezas necesita un caso concreto y cómo se relacionan</strong>, no en incluir todas las tecnologías disponibles. Una arquitectura es una descripción de esas decisiones: componentes, datos que circulan, límites de cada responsabilidad y comportamiento cuando algo falla.</p>
+<p><strong>Al finalizar podrás</strong> proponer una arquitectura mínima para una necesidad profesional, identificar la procedencia de las respuestas, distinguir decisiones del modelo y de la aplicación, y planificar una integración gradual.</p>
+<h2 id="1-empezar-por-la-necesidad">1. Empezar por la necesidad</h2>
+<p>Antes de pensar en componentes conviene situar el problema en un contexto concreto. Imaginemos que el equipo docente de una asignatura recibe cada curso numerosas preguntas sobre entregas, extensión de informes y criterios de evaluación. Parte de la documentación es pública para el alumnado y parte corresponde a borradores internos que todavía no deben consultarse.</p>
+<p>En ese contexto, «crear un asistente con memoria, RAG y agentes» enumera técnicas, pero todavía no expresa la necesidad. Una formulación más útil sería «ayudar al equipo de una asignatura a responder preguntas frecuentes sobre instrucciones vigentes sin divulgar borradores internos». Esta segunda formulación permite preguntar quién utilizará el sistema, qué fuentes están autorizadas, qué dudas debe resolver y qué hacer cuando no hay una respuesta suficientemente fundamentada.</p>
+<p>Para convertir esa necesidad en decisiones de diseño puede utilizarse una ficha inicial. Su finalidad no es decidir todavía la tecnología, sino hacer explícito qué debe resolver el sistema y cuáles son sus límites:</p>
+<table>
+<thead>
+<tr>
+<th>Pregunta</th>
+<th>Decisión que debe quedar explícita</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>¿Quién usa el sistema?</td>
+<td>Grupo destinatario y acceso permitido.</td>
+</tr>
+<tr>
+<td>¿Qué problema resuelve?</td>
+<td>Una o dos tareas verificables.</td>
+</tr>
+<tr>
+<td>¿Qué información recibe?</td>
+<td>Petición, estado y fuentes concretas.</td>
+</tr>
+<tr>
+<td>¿Qué produce?</td>
+<td>Respuesta, borrador o propuesta de acción.</td>
+</tr>
+<tr>
+<td>¿Qué no puede hacer?</td>
+<td>Decisiones fuera de su ámbito y acciones sin autorización.</td>
+</tr>
+<tr>
+<td>¿Cómo sabremos si funciona?</td>
+<td>Casos de prueba y criterios de revisión.</td>
+</tr>
+</tbody>
+</table>
+<p>La tabla permite detectar pronto si realmente es necesario construir un sistema de IA generativa. Puede revelar, por ejemplo, que una página de preguntas frecuentes bien mantenida basta. Si se necesitan consultas variadas sobre documentos extensos, tendría sentido estudiar recuperación. Si se repiten tareas con pasos y aprobaciones, podría justificarse un workflow. <strong>La complejidad debe responder al problema</strong>, no al número de tecnologías que sea posible incorporar.</p>
+<details>
+<summary><strong>¿Por qué no elegir primero el modelo?</strong></summary>
+
+El modelo importa, pero sin una tarea y criterios claros no sabremos qué capacidades comprobar. Una vez definido el problema pueden compararse alternativas según su capacidad para procesar el tipo de entrada, su funcionamiento en las pruebas, el acceso permitido a los datos, el coste y el esfuerzo de mantenimiento. No existe un modelo óptimo para todos los casos.
+
+</details>
+
+<h2 id="2-componentes-y-responsabilidades">2. Componentes y responsabilidades</h2>
+<p>Una vez delimitada la necesidad, podemos identificar las piezas que participan en el sistema. Para razonar sobre ellas resulta útil organizarlas en <strong>capas lógicas</strong>: grupos de funciones con responsabilidades diferenciadas. Una capa lógica no tiene por qué corresponder a un programa, servidor o servicio independiente; es una forma de separar responsabilidades para comprender mejor el sistema y localizar fallos.</p>
+<p>La siguiente tabla muestra una posible descomposición. No todos los sistemas necesitan todos estos componentes, y en un prototipo varias responsabilidades pueden estar reunidas en una misma aplicación.</p>
+<table>
+<thead>
+<tr>
+<th>Componente</th>
+<th>Responsabilidad</th>
+<th>Ejemplo de fallo que le corresponde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interfaz</td>
+<td>Recibir la petición y mostrar límites y fuentes.</td>
+<td>Oculta a qué versión pertenece la respuesta.</td>
+</tr>
+<tr>
+<td>Control de acceso</td>
+<td>Determinar qué datos puede consultar la persona.</td>
+<td>Entrega un documento restringido.</td>
+</tr>
+<tr>
+<td>Orquestación</td>
+<td>Seleccionar pasos y construir el contexto de la petición.</td>
+<td>Mezcla tareas o estados de proyectos distintos.</td>
+</tr>
+<tr>
+<td>Estado de conversación</td>
+<td>Conservar decisiones vigentes y correcciones.</td>
+<td>Reutiliza una duración sustituida.</td>
+</tr>
+<tr>
+<td>Recuperación</td>
+<td>Localizar pasajes autorizados y pertinentes.</td>
+<td>Trae una guía archivada.</td>
+</tr>
+<tr>
+<td>Modelo</td>
+<td>Generar o transformar el contenido aportado.</td>
+<td>Añade una condición no presente en la fuente.</td>
+</tr>
+<tr>
+<td>Herramientas</td>
+<td>Leer o modificar servicios externos con permiso.</td>
+<td>Repite un envío tras perder la confirmación.</td>
+</tr>
+<tr>
+<td>Revisión y registro</td>
+<td>Permitir comprobar y corregir resultados.</td>
+<td>No queda rastro de qué pasaje se utilizó.</td>
+</tr>
+</tbody>
+</table>
+<p>La tabla no debe interpretarse como una plantilla que haya que reproducir completa. Una función puede combinarse con otra en un prototipo. Por ejemplo, la selección de pasajes puede hacerse manualmente y quedar registrada en una tabla. Lo esencial es reconocer <strong>quién o qué asume cada responsabilidad</strong>, qué información recibe y quién verifica el resultado cuando sea necesario.</p>
+<h3 id="un-limite-claro-para-las-acciones">Un límite claro para las acciones</h3>
+<p>Conviene separar «el modelo propone consultar» de «la aplicación ejecuta la consulta» y de «el servicio confirma la operación». Del mismo modo, una propuesta de correo es una salida del modelo; enviarlo es una acción que exige controles adicionales. Estas diferencias se estudiaron en el <a href="../../../bloque2/teoria/tema6-automatizacion/">Tema 6</a> y adquieren importancia cuando se integran todas las piezas.</p>
+<p><img alt="Componentes lógicos de un sistema de IA generativa" src="../../../assets/images/tema7-arquitectura.png" style="display:block; margin:auto;" width="400" /></p>
+<p><small><strong>Imagen.</strong> <em>Organización lógica de los componentes de un sistema de IA generativa y de las responsabilidades que intervienen en su funcionamiento.</em></small></p>
+<h2 id="3-seguir-el-recorrido-de-los-datos">3. Seguir el recorrido de los datos</h2>
+<p>Una arquitectura se entiende mejor si seguimos <strong>una petición concreta</strong> de principio a fin. Retomemos el caso del equipo docente. Un estudiante accede al asistente y pregunta: «¿Cuál es el máximo de páginas del informe de este curso?». El sistema debe responder utilizando únicamente la documentación vigente y accesible para ese estudiante. El recorrido podría ser:</p>
+<ol>
+<li>La interfaz identifica la pregunta y el curso al que se refiere.</li>
+<li>El control de acceso determina qué documentos puede consultar la persona.</li>
+<li>La recuperación filtra la edición vigente y selecciona el apartado de extensión.</li>
+<li>La orquestación entrega al modelo la pregunta, instrucciones y pasaje con versión.</li>
+<li>El modelo redacta una respuesta provisional con referencia al apartado.</li>
+<li>Un control comprueba que la afirmación no excede lo que dice la fuente; la interfaz muestra la respuesta y su procedencia.</li>
+</ol>
+<p>Si falta el curso, el sistema podría pedir aclaración antes del paso 3. Si no encuentra fuente, debería indicarlo. Si una herramienta externa falla, no debe inventarse su resultado. <strong>Estas bifurcaciones son parte de la arquitectura</strong>, aunque se representen en una tabla y no en código.</p>
+<details>
+<summary><strong>¿Dónde interviene la memoria?</strong></summary>
+
+Solo si aporta valor al caso. Puede conservar la edición elegida durante la conversación o preferencias necesarias para la tarea. Debe quedar claro su alcance: no se debe llevar automáticamente la edición de una asignatura a otra conversación. El <a href="../../../bloque1/teoria/tema3-contexto-y-memoria">Tema 3: Contexto y memoria  desarrolla esa distinción.</a>
+
+</details>
+
+<h3 id="contratos-entre-componentes">Contratos entre componentes</h3>
+<p>Cuando varias piezas colaboran, no basta con saber qué hace cada una: también hay que definir <strong>qué información entrega una a la siguiente y en qué forma</strong>. A ese acuerdo sobre entradas y salidas lo llamaremos aquí <strong>contrato entre componentes</strong>. No implica necesariamente un contrato técnico formal; sirve para especificar qué puede esperar cada parte del sistema.</p>
+<p>Por ejemplo, una recuperación útil puede devolver, además del texto, <strong>identificador de fuente, versión, sección y estado de acceso</strong>. La generación recibe esos pasajes delimitados y devuelve una respuesta que pueda revisarse. La interfaz, a su vez, debería presentar la referencia y reflejar adecuadamente la incertidumbre: no debe transformar «no se ha encontrado» en una afirmación concluyente.</p>
+<details>
+<summary><strong>💡 Metáfora · El relevo</strong></summary>
+
+<div style="background-color: #FFF9EC; padding: 12px 16px;">
+
+En una carrera de relevos no basta con que cada corredor sea rápido: el testigo debe pasar correctamente de uno al siguiente. En una arquitectura ocurre algo parecido. Cada componente puede funcionar bien por separado, pero si entrega información incompleta o ambigua al siguiente, el sistema puede fallar. El <strong>contrato</strong> especifica qué testigo debe entregarse y qué información debe acompañarlo.
+
+</div>
+
+</details>
+
+<p>Un prototipo que solo intercambia párrafos sin procedencia puede parecer funcional hasta que se cambia un documento. Entonces resulta difícil determinar por qué respondió de una manera u otra. Definir estas entradas y salidas desde el principio facilita tanto la integración como el diagnóstico posterior.</p>
+<h2 id="4-integrar-por-etapas-y-observar-el-sistema">4. Integrar por etapas y observar el sistema</h2>
+<p>Una integración razonable comienza con el camino más simple que resuelve el caso y añade componentes solo cuando aportan una capacidad necesaria. En el asistente de la asignatura, por ejemplo, podríamos avanzar de forma gradual:</p>
+<ul>
+<li><strong>Primer recorrido:</strong> petición, fuente elegida manualmente y respuesta revisada.</li>
+<li><strong>Segundo recorrido:</strong> recuperación automática y referencia verificable.</li>
+<li><strong>Tercer recorrido:</strong> estado conversacional y actualización de decisiones.</li>
+<li><strong>Cuarto recorrido, solo si procede:</strong> una herramienta o un workflow con aprobación.</li>
+</ul>
+<p>Esta progresión permite comprobar cada incorporación antes de añadir la siguiente. El orden exacto depende del proyecto: quizá otro sistema no necesite memoria o nunca llegue a ejecutar acciones. Añadir varios componentes al mismo tiempo puede hacer difícil atribuir un error. Conviene conservar preguntas de prueba constantes y registrar qué cambió de una versión a otra.</p>
+<h3 id="aspectos-de-uso-que-tambien-se-disenan">Aspectos de uso que también se diseñan</h3>
+<p>Una arquitectura viable necesita considerar tiempos de respuesta, recursos necesarios, continuidad si un servicio falla, actualización de fuentes y quién atenderá incidencias. No hace falta calcular cifras universales: en un prototipo basta identificar dónde se producirían esperas, costes por consulta o dependencias de un proveedor.</p>
+<p>Además, necesitamos poder <strong>observar qué ha ocurrido dentro del sistema</strong> cuando una respuesta es incorrecta o una acción falla. Para ello se conservan determinados registros que permiten reconstruir el recorrido seguido, siempre dentro de la finalidad y los permisos establecidos. La siguiente tabla recoge algunas señales especialmente útiles:</p>
+<table>
+<thead>
+<tr>
+<th>Señal que conviene registrar</th>
+<th>Para qué ayuda</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Versión de instrucciones y del corpus</td>
+<td>Reproducir una respuesta.</td>
+</tr>
+<tr>
+<td>Pasaje recuperado y fuente</td>
+<td>Diagnosticar citas y vigencia.</td>
+</tr>
+<tr>
+<td>Herramienta llamada y resultado</td>
+<td>Separar solicitud y ejecución.</td>
+</tr>
+<tr>
+<td>Corrección o aprobación humana</td>
+<td>Conocer qué se publicó realmente.</td>
+</tr>
+<tr>
+<td>Error y momento del fallo</td>
+<td>Priorizar una reparación.</td>
+</tr>
+</tbody>
+</table>
+<p>Estos registros ayudan a distinguir, por ejemplo, si el problema estaba en la fuente recuperada, en la generación o en una herramienta externa. Sin embargo, <strong>observar el sistema no significa registrar todo</strong>. Los datos conservados deben limitarse a lo necesario para la finalidad del servicio y respetar los permisos adecuados; registrar información indiscriminadamente también sería una mala decisión de diseño.</p>
+<details>
+<summary><strong>¿Arquitectura y diagrama son lo mismo?</strong></summary>
+
+El diagrama ayuda a comunicar la arquitectura, pero no la agota. También hay que explicar reglas como «solo se consulta la edición vigente» o «ninguna respuesta se envía sin aprobación». Una tabla de componentes, un recorrido de datos y unas pruebas pueden ser más informativos que un diagrama complejo sin decisiones explícitas.
+
+</details>
+
+<h2 id="5-dos-ejemplos-desarrollados">5. Dos ejemplos desarrollados</h2>
+<ol>
+<li><a href="../ejemplos/tema7-ejemplo1-asistente-asignatura/">Ejemplo 1. Asistente de información para una asignatura</a>. Selecciona componentes y sigue una consulta concreta.</li>
+<li><a href="../ejemplos/tema7-ejemplo2-informe-investigacion/">Ejemplo 2. Preparación de un informe de investigación</a>. Muestra un sistema con borrador, fuente y aprobación, sin agentes autónomos.</li>
+</ol>
+<p>Ambos son casos <strong>ficticios</strong>. Sus decisiones ilustran posibilidades; cada proyecto requiere comprobar fuentes, acceso y necesidades reales.</p>
+<h2 id="6-sintesis-y-comprobacion">6. Síntesis y comprobación</h2>
+<p>Una arquitectura traduce la necesidad en componentes, flujos de datos y reglas de actuación. Integrar no equivale a sumar técnicas; significa que cada pieza cumpla una función, intercambie información verificable y permita localizar fallos.</p>
+<ol>
+<li>¿Qué componente revisarías primero si el pasaje aportado procede de un curso anterior?</li>
+<li>Si el modelo redacta «correo enviado», ¿qué evidencia faltaría para afirmar que se envió?</li>
+<li>¿Qué se perdería si el recuperador devolviera texto sin identificador ni versión?</li>
+<li>¿Cuándo estaría justificado añadir memoria entre sesiones?</li>
+</ol>
+<details>
+<summary><strong>Orientaciones de respuesta</strong></summary>
+
+<p>1. Filtro de ámbito y versión de la recuperación, además del inventario de documentos.</p>
+<p>2. La confirmación del servicio de envío y la autorización correspondiente.</p>
+<p>3. Capacidad de comprobar, reproducir y actualizar la respuesta.</p>
+<p>4. Cuando una necesidad concreta requiera continuidad y se hayan definido alcance, conservación y corrección de los datos.</p>
+
+</details>
+
+<p><strong>Para continuar:</strong> el <a href="../tema8-calidad-y-evaluacion/">Tema 8</a> establece criterios y pruebas para el sistema integrado; la <a href="../../actividades/actividad5-integracion/">Actividad 5</a> permitirá revisar una arquitectura y ensayar su evaluación.</p>
+<h3 id="lecturas-de-referencia">Lecturas de referencia</h3>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview">Microsoft Learn: visión general de RAG</a>. Arquitectura de recuperación y respuesta.</li>
+<li><a href="https://developers.openai.com/api/docs/guides/tools">OpenAI: uso de herramientas</a>. Posibles integraciones; su configuración depende de la plataforma elegida.</li>
+</ul>
+<p><a href="../../">Volver a la presentación del bloque</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>
