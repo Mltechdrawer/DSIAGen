@@ -1,0 +1,8 @@
+/* Paleta verde bosque apagado para Material for MkDocs. */
+:root > * {
+  --md-primary-fg-color: #2F6655;
+  --md-primary-fg-color--light: #528A77;
+  --md-primary-fg-color--dark: #214B3E;
+  --md-accent-fg-color: #285A4A;
+}
+.portada-imagen { max-width: 100%; height: auto; border-radius: 0.5rem; }

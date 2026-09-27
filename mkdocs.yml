@@ -1,0 +1,45 @@
+site_name: Diseño de Sistemas de Inteligencia Artificial Generativa
+site_description: Microcredencial universitaria de 3 ECTS
+theme:
+  name: material
+  language: es
+  palette:
+    primary: custom
+    accent: custom
+extra_css:
+  - assets/stylesheets/extra.css
+nav:
+  - Inicio: index.md
+  - La microcredencial:
+      - Presentación: microcredencial/index.md
+      - Resultados de aprendizaje: microcredencial/resultados-de-aprendizaje.md
+      - Organización y metodología: microcredencial/organizacion-y-metodologia.md
+  - Bloque I. Interacción y contexto:
+      - Presentación: bloque1/index.md
+      - Teoría:
+          - Tema 1. Modelos y sistemas: bloque1/teoria/tema1-modelos-y-sistemas.md
+          - Tema 2. Prompts e interacción: bloque1/teoria/tema2-prompts-e-interaccion.md
+          - Tema 3. Contexto y memoria: bloque1/teoria/tema3-contexto-y-memoria.md
+      - Actividades:
+          - Actividad 1. Prompts: bloque1/actividades/actividad1-prompts.md
+          - Actividad 2. Interacción contextual: bloque1/actividades/actividad2-interaccion-contextual.md
+  - Bloque II. Conocimiento y automatización:
+      - Presentación: bloque2/index.md
+      - Teoría:
+          - Tema 4. Conocimiento externo: bloque2/teoria/tema4-conocimiento-externo.md
+          - Tema 5. Sistemas RAG: bloque2/teoria/tema5-sistemas-rag.md
+          - Tema 6. Automatización: bloque2/teoria/tema6-automatizacion.md
+      - Actividades:
+          - Actividad 3. Prototipo con conocimiento: bloque2/actividades/actividad3-prototipo-con-conocimiento.md
+          - Actividad 4. Workflow con IA: bloque2/actividades/actividad4-workflow.md
+  - Bloque III. Diseño y evaluación:
+      - Presentación: bloque3/index.md
+      - Teoría:
+          - Tema 7. Arquitectura e integración: bloque3/teoria/tema7-arquitectura-e-integracion.md
+          - Tema 8. Calidad y evaluación: bloque3/teoria/tema8-calidad-y-evaluacion.md
+      - Actividad de integración: bloque3/actividades/actividad5-integracion.md
+  - Proyecto final: proyecto-final.md
+  - Recursos: recursos/index.md
+  - Bibliografía: bibliografia.md
+markdown_extensions:
+  - attr_list
